@@ -26,6 +26,7 @@ public class Members {
         this.genderIsFemale = genderIsFemale;
         this.isActive = isActive;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+
     }
 
     public int getAge()

@@ -1,10 +1,8 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Formand {
+public class ChairmanController
+{
 
     //attributes
     private boolean loop = true;
@@ -23,14 +21,14 @@ public class Formand {
 
     //constructor
 //
-    public Formand(Userinterface userinterface){
+    public ChairmanController(Userinterface userinterface){
         this.userinterface=userinterface;
     }
 
-    public void formandMenu() throws FileNotFoundException {
+    public void chairmanMenu() throws FileNotFoundException {
 
         while (loop) {
-            userinterface.formandMenu();
+            userinterface.chairmanMenu();
             int input = userinterface.returnsUserInputInt();
 
             switch (input) {

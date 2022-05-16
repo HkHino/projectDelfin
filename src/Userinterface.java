@@ -43,11 +43,12 @@ public class Userinterface
                 3) return to previous menu       
                 4) view list of members               
                 6) view top 5 (10?) list maybe make to lists?
+                7) Add time to competitive swimmer
                                 
                 """);
     }
 
-    public void formandMenu()
+    public void chairmanMenu()
     {
         System.out.println("""
                                 

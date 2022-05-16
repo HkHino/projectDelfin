@@ -1,16 +1,15 @@
 public class Trainer
 {
 
-    private Userinterface userinterface;
-    private Formand formand;
+    private String name;
+    private int iD;
 
     private String[] svømmediscipliner = {"butterfly", "crawl", "rygcrawl", "brystsvømning"};
 
 
-    public Trainer(Userinterface userinterface, Formand formand)
-    {
-        this.userinterface = userinterface;
-        this.formand = formand;
+    public Trainer(String name, int iD){
+        this.name = name;
+        this.iD = iD;
     }
 
     public void assignMembersToDisciplins()

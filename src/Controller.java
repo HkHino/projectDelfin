@@ -1,19 +1,20 @@
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class Controller
 {
-    private Formand formand;
-    private Kassér kassér;
+    private ChairmanController chairmanController;
+    private TrainerController trainerController;
+    private Cashier cashier;
     private Userinterface userinterface;
     private Trainer trainer;
 
     public Controller()
     {
         userinterface = new Userinterface();
-        formand = new Formand(userinterface);
-        kassér = new Kassér(userinterface, formand);
-        trainer = new Trainer(userinterface, formand);
+        chairmanController = new ChairmanController(userinterface);
+        trainerController = new TrainerController(userinterface);
+        cashier = new Cashier(userinterface, chairmanController);
+        trainer = new Trainer("Bob", 1);
     }
 
     public void run() throws FileNotFoundException
@@ -32,11 +33,11 @@ public class Controller
 
         if (input == 1)
         {
-            formand.formandMenu();
+            chairmanController.chairmanMenu();
         }
         else if (input == 2)
         {
-            userinterface.trainerMenu();
+            trainerController.trainerMenu();
         }
         else if (input == 3)
             userinterface.kasserMenu();
