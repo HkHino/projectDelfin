@@ -1,5 +1,8 @@
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ChairmanController
 {
@@ -50,7 +53,7 @@ public class ChairmanController
                     userinterface.viewListOfMembers(allMembers);
 
             }
-            //saveListOfMembers();
+            saveListOfMembers();
 
         }
 
@@ -64,9 +67,8 @@ public class ChairmanController
         userinterface.askAddress();
         String inputAddress = userinterface.returnsUserInputString();
 
-        userinterface.askAge();
-        int inputAge = userinterface.returnsUserInputInt();
-        //kassér.memberStatus(inputAge);
+        userinterface.askDateOfBirth();
+        String inputDateOfBirth = userinterface.returnsUserInputString();
 
         userinterface.askGender();
         String inputGenderIsFemale = userinterface.returnsUserInputString();
@@ -95,16 +97,16 @@ public class ChairmanController
         else
             isCompetitiveSwimmer = false;
 
-        createNewMember(inputName, inputAge, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
 
 
     }
-    public void createNewMember(String name, int age, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
-        Members member = new Members(name, age, address, genderIsFemale, isActive, isCompetitiveSwimmer);
+    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
+        Members member = new Members(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
         addMemberToMemberList(member);
 
-        addJuniorOrSenior(age,member);
+        addJuniorOrSenior(member.getAge(),member);
         addActiveOrPassive(isActive,member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
 
@@ -120,7 +122,7 @@ public class ChairmanController
     public void addJuniorOrSenior(int age, Members member){
         if (age<18)
             juniors.add(member);
-        else if(age >= 18 && age < 60) //todo why does this not of workings?
+        else if(age >= 18 && age <= 60) //todo why does this not of workings?
         {
             seniors.add(member);
         }
@@ -158,10 +160,11 @@ public class ChairmanController
     }
 
 
-   /* public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
+   public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.txt");
+
         for(Members member : allMembers) {
-            out.println(member.getName()+ ";" + member.getAge() + ";"+ member.getAddress()+ ";"+ member.isGenderIsFemale()+ ";"+
+            out.println(member.getName()+ ";" + member.getDateOfBirth() + ";"+ member.getAddress()+ ";"+ member.isGenderIsFemale()+ ";"+
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
     }
@@ -170,17 +173,17 @@ public class ChairmanController
         Scanner sc = new Scanner(new File("members.txt")).useDelimiter(";");
         while(sc.hasNextLine()) {
             String name = sc.next();
-            int age = sc.nextInt();
+            String dateOfBirth = sc.next();
             String address = sc.next();
             boolean isGenderIsFemale = sc.nextBoolean();
             boolean  isActive =sc.nextBoolean();
             boolean isCompetitiveSwimmer = sc.nextBoolean();
 
-            Members member = new Members(name,age,address,isGenderIsFemale,isActive,isCompetitiveSwimmer);
+            Members member = new Members(name,dateOfBirth,address,isGenderIsFemale,isActive,isCompetitiveSwimmer);
 
             allMembers.add(member);
         }
-    }*/
+    }
 
 
     public void removeMemberFromMemberList(Members member) {

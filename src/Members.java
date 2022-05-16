@@ -7,7 +7,7 @@ public class Members {
     private String name;
     private int age;  //todo make method that calculate birthdays automatically and adjusts system.
     private String adress;
-    private Date dayOfBirth;
+    private String dateOfBirth;
     private int membershipPrice;
 
     private boolean genderIsFemale;
@@ -15,8 +15,7 @@ public class Members {
     private boolean isCompetitiveSwimmer;
 
     //methods
-    public void calculateAge() {
-        String dateOfBirth = "17-05-1986";
+    public int calculateAge() {
 
         int currentYear = LocalDateTime.now().getYear();
         int currentMonth = LocalDateTime.now().getMonthValue();
@@ -28,24 +27,25 @@ public class Members {
 
         System.out.println(month);
 
-        int age;
         if (currentMonth >= month && currentDay >= day)
             age = currentYear - year;
         else
             age = currentYear - year - 1;
 
-        System.out.println("age: " + age);
+        return age;
     }
 
     //constructor
-    public Members(String name, int age, String adress, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
+    public Members(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
     {
         this.name = name;
-        this.age = age;
-        this.adress = adress;
+        this.dateOfBirth = dateOfBirth;
+        this.adress = address;
         this.genderIsFemale = genderIsFemale;
         this.isActive = isActive;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+
+        calculateAge();
 
     }
 
@@ -81,8 +81,8 @@ public class Members {
         return membershipPrice;
     }
 
-    public void getDate(){
-
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
 }

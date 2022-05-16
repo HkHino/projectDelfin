@@ -86,9 +86,9 @@ public class Userinterface
         System.out.print("Address: ");
     }
 
-    public void askAge()
+    public void askDateOfBirth()
     {
-        System.out.print("Age: ");
+        System.out.print("Date of birth (xx-xx-xxxx): ");
     }
 
     public void askGender()

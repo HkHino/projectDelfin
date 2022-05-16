@@ -8,18 +8,19 @@ public class Controller
     private Userinterface userinterface;
     private Trainer trainer;
 
-    public Controller()
-    {
+    public Controller() throws FileNotFoundException {
         userinterface = new Userinterface();
         chairmanController = new ChairmanController(userinterface);
         trainerController = new TrainerController(userinterface);
         cashier = new Cashier(userinterface, chairmanController);
         trainer = new Trainer("Bob", 1);
+
+
     }
 
     public void run() throws FileNotFoundException
     {
-        //formand.loadListOfMembers(); //todo move this to the correct place Basma knows where
+        //chairmanController.loadListOfMembers(); //todo move this to the correct place Basma knows where
         //System.out.println(formand.getAllMembers());
         showMainMenu();
     }
