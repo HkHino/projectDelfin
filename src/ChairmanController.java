@@ -50,10 +50,43 @@ public class ChairmanController
                 }
 
                 case 4:
-                    userinterface.viewListOfMembers(allMembers);
-
+                    adjustMembers();
+                    break;
             }
             saveListOfMembers();
+
+        }
+
+    }
+
+    public void adjustMembers(){
+        userinterface.adjustMembersMenu();
+        int input = userinterface.returnsUserInputInt();
+
+        switch (input) {
+            case 1: {
+                userinterface.viewListOfMembers(allMembers);
+                break;
+            }
+            case 2:{
+                findMemberToAdjust();
+
+            }
+
+        }
+
+    }
+    public void findMemberToAdjust(){
+        userinterface.askFindMemberToAdjust();
+        String input = userinterface.returnsUserInputString();
+
+        for (Members member: allMembers) {
+            if(input.equals(member.getName())){
+                //print nuværende member info
+                //spørg om hvilken data de vil ændre
+                // set den nye data (lav settere til alle data)
+                //print medlem ændringen til skærmen
+            }
 
         }
 
@@ -131,21 +164,18 @@ public class ChairmanController
             pentionist.add(member);
         }
     }
-
     public void addActiveOrPassive(boolean isActive, Members member){
         if (isActive)
             activeMembers.add(member);
         else
             passiveMembers.add(member);
     }
-
     public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Members member){
         if (isCompetitiveSwimmer)
             competetiveSwimmers.add(member);
         else
             exercicsers.add(member);
     }
-
 
     public void cancelSubscription(){
         userinterface.cancelSub();
@@ -157,6 +187,9 @@ public class ChairmanController
                 removeMemberFromMemberList(allMembers.get(i));
         }
 
+    }
+    public void removeMemberFromMemberList(Members member) {
+        allMembers.remove(member);
     }
 
 
@@ -186,23 +219,16 @@ public class ChairmanController
     }
 
 
-    public void removeMemberFromMemberList(Members member) {
-        allMembers.remove(member);
-    }
-
     public ArrayList<Members> getAllMembers() {
         return allMembers;
     }
-
     public ArrayList<Members> getJuniors() {
         return juniors;
 
     }
-
     public ArrayList<Members> getSeniors() {
         return seniors;
     }
-
     public ArrayList<Members> getPassiveMembers() {
         return passiveMembers;
     }
