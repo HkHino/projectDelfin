@@ -15,7 +15,27 @@ public class Members {
     private boolean isCompetitiveSwimmer;
 
     //methods
+    public void calculateAge() {
+        String dateOfBirth = "17-05-1986";
 
+        int currentYear = LocalDateTime.now().getYear();
+        int currentMonth = LocalDateTime.now().getMonthValue();
+        int currentDay = LocalDateTime.now().getDayOfMonth();
+
+        int year = Integer.parseInt(dateOfBirth.substring(6, 10));
+        int month = Integer.parseInt(dateOfBirth.substring(3, 5));
+        int day = Integer.parseInt(dateOfBirth.substring(0, 2));
+
+        System.out.println(month);
+
+        int age;
+        if (currentMonth >= month && currentDay >= day)
+            age = currentYear - year;
+        else
+            age = currentYear - year - 1;
+
+        System.out.println("age: " + age);
+    }
 
     //constructor
     public Members(String name, int age, String adress, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
