@@ -9,12 +9,12 @@ public class Controller
     private Trainer trainer;
 
     public Controller() throws FileNotFoundException {
+
         userinterface = new Userinterface();
         chairmanController = new ChairmanController(userinterface);
         trainerController = new TrainerController(userinterface);
         cashier = new Cashier(userinterface, chairmanController);
         trainer = new Trainer("Bob", 1);
-
 
     }
 

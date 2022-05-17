@@ -51,20 +51,22 @@ public class Userinterface {
                  2) Unregister member
                  3) Return to previous menu  
                  4) Members
-                 
-                 //VIRKER IKKE ENDNU     
-                 5) save list of members to file - gøres automatisk?
-                 6) view top 5 (10?) list maybe make to lists?
-                 7) view payments
-                 8) view expenses
-                 9) view balance left """);
+                 5) Economy management """);
     }
 
     public void adjustMembersMenu() {
         System.out.println("""
                 1) View member list
                 2) Change member data/status
-                3)
+                3) Top 5 competitive swimmers
+                """);
+    }
+
+    public void economyManagementMenu(){
+        System.out.println("""
+                 1) View payments
+                 2) view expenses
+                 3) view balance left
                 """);
     }
 
@@ -106,14 +108,48 @@ public class Userinterface {
 
     public void viewListOfMembers(ArrayList<Members> members) {
         System.out.println("List of all members");
+        String gender;
+        String activity;
+        String memberStatus;
         for (int i = 0; i < members.size(); i++) {
-            System.out.println(members.get(i).getName() + ", Age:" + members.get(i).getAge() + ", Is active member: " +
-                    members.get(i).isActive() + ", is competitive Swimmer: " + members.get(i).isCompetitiveSwimmer());
+
+            if(members.get(i).isGenderIsFemale())
+                gender = "female";
+            else
+                gender = "Male";
+
+            if(members.get(i).isActive())
+                activity = "Active";
+            else
+                activity = "Passiv";
+
+            if(members.get(i).isCompetitiveSwimmer())
+                memberStatus = "Competitive Swimmer";
+            else
+                memberStatus = "Exerciser";
+
+            System.out.println(members.get(i).getName() + ", "+ members.get(i).getAge() + ", "+
+                    activity + ", " + memberStatus+", "+gender+", "+ members.get(i).getAddress());
         }
+    }
+
+    public void printMember(Members member){
+        System.out.println(member.getName() + ", Age:" + member.getAge() + ", Is active member: " +
+                member.isActive() + ", is Competitive Swimmer: " + member.isCompetitiveSwimmer());
+
     }
 
     public void askFindMemberToAdjust() {
         System.out.print("Enter member name: ");
 
+    }
+
+    public void askWhatInfoToAdjust() {
+        System.out.println("""
+                Adjust information
+                1) Name
+                2) Date of birth
+                3)
+                """);
     }
 }

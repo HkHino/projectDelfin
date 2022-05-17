@@ -49,13 +49,24 @@ public class ChairmanController
                     //todo implement previous menu page
                 }
 
-                case 4:
+                case 4:{
                     adjustMembers();
                     break;
+                }
+
+                case 5:{
+                    economyManagement();
+                }
             }
+
             saveListOfMembers();
 
         }
+
+    }
+
+    private void economyManagement() {
+        userinterface.economyManagementMenu();
 
     }
 
@@ -72,6 +83,8 @@ public class ChairmanController
                 findMemberToAdjust();
 
             }
+            case 3:
+                //todo top 5
 
         }
 
@@ -82,7 +95,8 @@ public class ChairmanController
 
         for (Members member: allMembers) {
             if(input.equals(member.getName())){
-                //print nuværende member info
+                userinterface.printMember(member);
+                userinterface.askWhatInfoToAdjust();
                 //spørg om hvilken data de vil ændre
                 // set den nye data (lav settere til alle data)
                 //print medlem ændringen til skærmen
