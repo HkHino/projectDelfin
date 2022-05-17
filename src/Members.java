@@ -5,7 +5,7 @@ public class Members {
 
     //attributes
     private String name;
-    private int age;  //todo make method that calculate birthdays automatically and adjusts system.
+    private int age;
     private String adress;
     private String dateOfBirth;
     private int membershipPrice;
