@@ -52,9 +52,9 @@ public class ChairmanController
                     break;
                 }
                 case 3:
-                {
-                    userinterface.StartMenu();
-                    //return to previous menu
+                { //todo check if return to previous menu works
+                   /* userinterface.StartMenu();
+                    //return to previous menu*/
                     loop = false;
                     break;
                 }
@@ -276,7 +276,7 @@ public class ChairmanController
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
     }
-
+    //todo find an adult to help figure out why this isnt working as intented?
     public void loadListOfMembers() throws FileNotFoundException
     { //Læser fra en fil
         Scanner sc = new Scanner(new File("members.txt")).useDelimiter(";");
@@ -294,7 +294,6 @@ public class ChairmanController
             allMembers.add(member);
         }
     }
-
 
     public ArrayList<Members> getAllMembers()
     {

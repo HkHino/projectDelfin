@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//todo give ui a overhaul to corrent numbers in menus and other minor inconsistencies
 public class Userinterface {
 
     Scanner scanner = new Scanner(System.in);

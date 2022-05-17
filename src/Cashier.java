@@ -28,7 +28,7 @@ public class Cashier
     public void cashierMenu()
     {
         while (loop)
-        {
+        {   //todo figure out why its printing text twice
             userinterface.cashierMenu();
             switch (userinterface.returnsUserInputInt())
             {
@@ -83,7 +83,7 @@ public class Cashier
         {
             System.out.println(chairmanController.getAllMembers().get(i).getName() + ", Payment: " +
                     chairmanController.getAllMembers().get(i).getMembershipPrice());
-        }
+        } //todo attatch random roller to this here class
 
     }
 
