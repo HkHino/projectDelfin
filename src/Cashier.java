@@ -19,7 +19,6 @@ public class Cashier
     private Userinterface userinterface;
     private ChairmanController chairmanController;
 
-
     public Cashier(Userinterface userinterface, ChairmanController chairmanController)
     {
         this.userinterface = userinterface;
@@ -30,6 +29,7 @@ public class Cashier
     {
         while (loop)
         {
+            userinterface.cashierMenu();
             switch (userinterface.returnsUserInputInt())
             {
                 case 1:
@@ -42,13 +42,12 @@ public class Cashier
                     paymentchecker(); //todo attatch to members list, attatch random checker to members to simulate irl payment issues
                     break;
                 case 4:
-                    System.out.println(chairmanController.getAllMembers()); //todo check if this is memory adress or content of arraylist
+                    System.out.println(chairmanController.getAllMembers());
                     break;
                 case 5:
-                    //todo implment return to previoius menu function
+
                     loop = false;
                     break;
-
             }
         }
     }

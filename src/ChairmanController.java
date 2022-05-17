@@ -21,12 +21,14 @@ public class ChairmanController
     private ArrayList<Members> pentionist = new ArrayList<>();
 
     private Userinterface userinterface;
+    private Cashier cashier;
 
     //constructor
 //
-    public ChairmanController(Userinterface userinterface)
+    public ChairmanController(Userinterface userinterface, Cashier cashier)
     {
         this.userinterface = userinterface;
+        this.cashier=cashier;
     }
 
     public void chairmanMenu() throws FileNotFoundException
@@ -63,18 +65,13 @@ public class ChairmanController
                 }
 
                 case 5:{
-                    economyManagement();
+                    cashier.cashierMenu();
                 }
             }
 
             saveListOfMembers();
 
         }
-
-    }
-
-    private void economyManagement() {
-        userinterface.economyManagementMenu();
 
     }
 

@@ -7,11 +7,13 @@ public class Controller
     private Cashier cashier;
     private Userinterface userinterface;
     private Trainer trainer;
+    private boolean loop = true;
 
-    public Controller() throws FileNotFoundException {
+    public Controller() throws FileNotFoundException
+    {
 
         userinterface = new Userinterface();
-        chairmanController = new ChairmanController(userinterface);
+        chairmanController = new ChairmanController(userinterface, cashier);
         trainerController = new TrainerController(userinterface);
         cashier = new Cashier(userinterface, chairmanController);
         trainer = new Trainer("Bob", 1);
@@ -27,21 +29,31 @@ public class Controller
 
     public void showMainMenu() throws FileNotFoundException
     {
-        userinterface.StartMenu();
-
-        int input = userinterface.returnsUserInputInt();
-
-        if (input == 1)
+        while (loop)
         {
-            chairmanController.chairmanMenu();
-        }
-        else if (input == 2)
-        {
-            trainerController.trainerMenu();
-        }
-        else if (input == 3)
-            userinterface.kasserMenu();
-            cashier.cashierMenu();
+            userinterface.StartMenu();
 
+            int input = userinterface.returnsUserInputInt();
+
+            if (input == 1)
+            {
+                chairmanController.chairmanMenu();
+            }
+            else if (input == 2)
+            {
+                trainerController.trainerMenu();
+            }
+            else if (input == 3)
+            {
+                userinterface.cashierMenu();
+                cashier.cashierMenu();
+            }
+            else
+            {
+                System.out.println("thanks for using malaka software inc");
+                loop = false;
+            }
+
+        }
     }
 }
