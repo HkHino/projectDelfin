@@ -24,14 +24,16 @@ public class Userinterface {
     public void StartMenu() {
         System.out.print("""
                 Log in:
-                1) Formand
+                1) Chairman
                 2) Trainer
-                3) Kassér
+                3) cashier
+                4) Close program
                 """);
     }
 
     public void trainerMenu() {
         System.out.println("""
+                you are logged in as Trainer
                 what would you like to do?
                                
                 3) return to previous menu       
@@ -43,9 +45,8 @@ public class Userinterface {
     }
 
     public void chairmanMenu() {
-        System.out.println("""
-                                
-                Logged in as FORMAND
+        System.out.println("""                                
+                Logged in as Chairman
                              
                  1) Sign up new member
                  2) Unregister member
@@ -62,16 +63,9 @@ public class Userinterface {
                 """);
     }
 
-    public void economyManagementMenu(){
-        System.out.println("""
-                 1) View payments
-                 2) view expenses
-                 3) view balance left
-                """);
-    }
-
-    public void kasserMenu() {
-        System.out.println("""              
+    public void cashierMenu() {
+        System.out.println("""    
+                you are logged in as Cashier          
                 what would you like to do?                                              
                 
                 1) view expeced income
