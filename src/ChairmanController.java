@@ -8,7 +8,7 @@ public class ChairmanController
 {
 
     //attributes
-    private boolean loop = true;
+
 
     //members
     private ArrayList<Members> allMembers = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ChairmanController
 
     public void chairmanMenu() throws FileNotFoundException
     {
-
+        boolean loop = true;
         while (loop)
         {
             userinterface.chairmanMenu();
@@ -66,6 +66,8 @@ public class ChairmanController
 
                 case 5:{
                     cashier.cashierMenu();
+                    //todo add acces to economics part
+                    break;
                 }
             }
 

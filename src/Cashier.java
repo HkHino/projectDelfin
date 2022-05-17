@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Cashier
 {
-
     private boolean hasPaid = false;
     private double expenses;
     boolean loop = true;

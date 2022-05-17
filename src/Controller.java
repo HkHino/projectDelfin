@@ -7,11 +7,11 @@ public class Controller
     private Cashier cashier;
     private Userinterface userinterface;
     private Trainer trainer;
-    private boolean loop = true;
+
 
     public Controller() throws FileNotFoundException
     {
-
+        //todo spørg en voksen!!! dette giver en nullpoint exception når programmet køres, hvordan kan det løses?
         userinterface = new Userinterface();
         chairmanController = new ChairmanController(userinterface, cashier);
         trainerController = new TrainerController(userinterface);
@@ -29,6 +29,7 @@ public class Controller
 
     public void showMainMenu() throws FileNotFoundException
     {
+        boolean loop = true;
         while (loop)
         {
             userinterface.StartMenu();
