@@ -99,28 +99,61 @@ public class ChairmanController
 
     }
 
-    public void findMemberToAdjust()
-    {
+    public void findMemberToAdjust(){
         userinterface.askFindMemberToAdjust();
         String input = userinterface.returnsUserInputString();
 
-        for (Members member : allMembers)
-        {
-            if (input.equals(member.getName()))
-            {
-                userinterface.printMember(member);
-                userinterface.askWhatInfoToAdjust();
-                //spørg om hvilken data de vil ændre
-                // set den nye data (lav settere til alle data)
-                //print medlem ændringen til skærmen
+        for (Members member: allMembers) {
+            if(input.equals(member.getName())){
+                adjustMemberInfo(member);
             }
-
         }
+    }
+
+    public void adjustMemberInfo(Members member){
+        userinterface.printMember(member);
+        userinterface.askWhatInfoToAdjust();
+       int input = userinterface.returnsUserInputInt();
+
+       switch (input){
+           case 1:{
+               userinterface.askName();
+               String name = userinterface.returnsUserInputString();
+               member.setName(name);
+               break;
+           }
+           case 2:{
+               userinterface.askDateOfBirth();
+               String date = userinterface.returnsUserInputString();
+               member.setDateOfBirth(date);
+               break;
+           }
+           case 3:{
+               userinterface.askAddress();
+               String address = userinterface.returnsUserInputString();
+               member.setAdress(address);
+               break;
+           }
+           case 4:{
+               member.setActive(!member.isActive());
+               break;
+           }
+           case 5:{
+               member.setCompetitiveSwimmer(!member.isCompetitiveSwimmer());
+               break;
+           }
+
+           case 6: {
+               member.setGenderIsFemale(!member.isGenderIsFemale());
+               break;
+           }
+       }
+
+       userinterface.printMember(member);
 
     }
 
-    public void signUpNewMember()
-    {
+    public void signUpNewMember() {
 
         userinterface.askName();
         String inputName = userinterface.returnsUserInputString();
@@ -134,8 +167,7 @@ public class ChairmanController
         userinterface.askGender();
         String inputGenderIsFemale = userinterface.returnsUserInputString();
         boolean genderIsFemale;
-        if (inputGenderIsFemale.equalsIgnoreCase("F"))
-        {
+        if (inputGenderIsFemale.equalsIgnoreCase("F")) {
             //System.out.println("you're a girl");
             genderIsFemale = true;
         }

@@ -73,10 +73,6 @@ public class Members {
         return isCompetitiveSwimmer;
     }
 
-    public void setMembershipPrice(int membershipPrice) {
-        this.membershipPrice = membershipPrice;
-    }
-
     public int getMembershipPrice() {
         return membershipPrice;
     }
@@ -84,6 +80,36 @@ public class Members {
     public String getDateOfBirth() {
         return dateOfBirth;
     }
+    public void setMembershipPrice(int membershipPrice) {
+        this.membershipPrice = membershipPrice;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGenderIsFemale(boolean genderIsFemale) {
+        this.genderIsFemale = genderIsFemale;
+    }
+
+    public void setCompetitiveSwimmer(boolean competitiveSwimmer) {
+        isCompetitiveSwimmer = competitiveSwimmer;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 }
 

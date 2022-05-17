@@ -134,8 +134,8 @@ public class Userinterface {
     }
 
     public void printMember(Members member){
-        System.out.println(member.getName() + ", Age:" + member.getAge() + ", Is active member: " +
-                member.isActive() + ", is Competitive Swimmer: " + member.isCompetitiveSwimmer());
+        System.out.println(member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
+                member.isActive() + ", is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
 
     }
 
@@ -149,7 +149,10 @@ public class Userinterface {
                 Adjust information
                 1) Name
                 2) Date of birth
-                3)
+                3) Address
+                4) Activity
+                5) Competitive/exerciser  
+                6) Gender 
                 """);
     }
 }
