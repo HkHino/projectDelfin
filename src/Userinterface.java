@@ -51,9 +51,9 @@ public class Userinterface {
                              
                  1) Sign up new member
                  2) Unregister member
-                 3) Return to previous menu
-                 4) Members
-                 5) Economy management
+                 3) Members
+                 4) Economy management
+                 5) Return to previous menu
                  """);
     }
 
