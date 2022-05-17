@@ -158,4 +158,8 @@ public class Userinterface {
                 6) Gender
                 """);
     }
+
+    public void newMemberSuccesful(String name){
+        System.out.println("You have successfully added a new member!: " + name);
+    }
 }
