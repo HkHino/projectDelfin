@@ -24,29 +24,37 @@ public class ChairmanController
 
     //constructor
 //
-    public ChairmanController(Userinterface userinterface){
-        this.userinterface=userinterface;
+    public ChairmanController(Userinterface userinterface)
+    {
+        this.userinterface = userinterface;
     }
 
-    public void chairmanMenu() throws FileNotFoundException {
+    public void chairmanMenu() throws FileNotFoundException
+    {
 
-        while (loop) {
+        while (loop)
+        {
             userinterface.chairmanMenu();
             int input = userinterface.returnsUserInputInt();
 
-            switch (input) {
-                case 1: {
+            switch (input)
+            {
+                case 1:
+                {
                     signUpNewMember();
                     break;
                 }
-                case 2: {
+                case 2:
+                {
                     cancelSubscription();
                     break;
                 }
-                case 3: {
+                case 3:
+                {
+                    userinterface.StartMenu();
                     //return to previous menu
                     loop = false;
-                    //todo implement previous menu page
+                    break;
                 }
 
                 case 4:{
@@ -70,16 +78,20 @@ public class ChairmanController
 
     }
 
-    public void adjustMembers(){
+    public void adjustMembers()
+    {
         userinterface.adjustMembersMenu();
         int input = userinterface.returnsUserInputInt();
 
-        switch (input) {
-            case 1: {
+        switch (input)
+        {
+            case 1:
+            {
                 userinterface.viewListOfMembers(allMembers);
                 break;
             }
-            case 2:{
+            case 2:
+            {
                 findMemberToAdjust();
 
             }
@@ -89,12 +101,16 @@ public class ChairmanController
         }
 
     }
-    public void findMemberToAdjust(){
+
+    public void findMemberToAdjust()
+    {
         userinterface.askFindMemberToAdjust();
         String input = userinterface.returnsUserInputString();
 
-        for (Members member: allMembers) {
-            if(input.equals(member.getName())){
+        for (Members member : allMembers)
+        {
+            if (input.equals(member.getName()))
+            {
                 userinterface.printMember(member);
                 userinterface.askWhatInfoToAdjust();
                 //spørg om hvilken data de vil ændre
@@ -106,7 +122,8 @@ public class ChairmanController
 
     }
 
-    public void signUpNewMember() {
+    public void signUpNewMember()
+    {
 
         userinterface.askName();
         String inputName = userinterface.returnsUserInputString();
@@ -120,10 +137,13 @@ public class ChairmanController
         userinterface.askGender();
         String inputGenderIsFemale = userinterface.returnsUserInputString();
         boolean genderIsFemale;
-        if (inputGenderIsFemale.equalsIgnoreCase("F")) {
+        if (inputGenderIsFemale.equalsIgnoreCase("F"))
+        {
             //System.out.println("you're a girl");
             genderIsFemale = true;
-        } else { //todo fejlhåndtering
+        }
+        else
+        { //todo fejlhåndtering
             //System.out.println("you're a boy");
             genderIsFemale = false;
         }
@@ -146,30 +166,32 @@ public class ChairmanController
 
         createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
 
-
     }
-    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
+
+    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
+    {
         Members member = new Members(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
         addMemberToMemberList(member);
 
-        addJuniorOrSenior(member.getAge(),member);
-        addActiveOrPassive(isActive,member);
+        addJuniorOrSenior(member.getAge(), member);
+        addActiveOrPassive(isActive, member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
 
 
         System.out.println("you have successfully added a new member!: " + member.getName());
-
-
     }
-    public void addMemberToMemberList(Members member) {
+
+    public void addMemberToMemberList(Members member)
+    {
         allMembers.add(member);
     }
 
-    public void addJuniorOrSenior(int age, Members member){
-        if (age<18)
+    public void addJuniorOrSenior(int age, Members member)
+    {
+        if (age < 18)
             juniors.add(member);
-        else if(age >= 18 && age <= 60) //todo why does this not of workings?
+        else if (age >= 18 && age <= 60) //this works as intented even though it says always true, this is simply just to make the code more readable
         {
             seniors.add(member);
         }
@@ -178,80 +200,97 @@ public class ChairmanController
             pentionist.add(member);
         }
     }
-    public void addActiveOrPassive(boolean isActive, Members member){
+
+    public void addActiveOrPassive(boolean isActive, Members member)
+    {
         if (isActive)
             activeMembers.add(member);
         else
             passiveMembers.add(member);
     }
-    public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Members member){
+
+    public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Members member)
+    {
         if (isCompetitiveSwimmer)
             competetiveSwimmers.add(member);
         else
             exercicsers.add(member);
     }
 
-    public void cancelSubscription(){
+    public void cancelSubscription()
+    {
         userinterface.cancelSub();
         userinterface.askName();
         String name = userinterface.returnsUserInputString();
 
-        for (int i = 0; i < allMembers.size(); i++) {
+        for (int i = 0; i < allMembers.size(); i++)
+        {
             if (name.equals(allMembers.get(i).getName()))
                 removeMemberFromMemberList(allMembers.get(i));
         }
 
     }
-    public void removeMemberFromMemberList(Members member) {
+
+    public void removeMemberFromMemberList(Members member)
+    {
         allMembers.remove(member);
     }
 
-
-   public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
+    public void saveListOfMembers() throws FileNotFoundException
+    { //skriver til en fil
         PrintStream out = new PrintStream("members.txt");
 
-        for(Members member : allMembers) {
-            out.println(member.getName()+ ";" + member.getDateOfBirth() + ";"+ member.getAddress()+ ";"+ member.isGenderIsFemale()+ ";"+
+        for (Members member : allMembers)
+        {
+            out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
     }
 
-    public void loadListOfMembers() throws FileNotFoundException { //Læser fra en fil
+    public void loadListOfMembers() throws FileNotFoundException
+    { //Læser fra en fil
         Scanner sc = new Scanner(new File("members.txt")).useDelimiter(";");
-        while(sc.hasNextLine()) {
+        while (sc.hasNextLine())
+        {
             String name = sc.next();
             String dateOfBirth = sc.next();
             String address = sc.next();
             boolean isGenderIsFemale = sc.nextBoolean();
-            boolean  isActive =sc.nextBoolean();
+            boolean isActive = sc.nextBoolean();
             boolean isCompetitiveSwimmer = sc.nextBoolean();
 
-            Members member = new Members(name,dateOfBirth,address,isGenderIsFemale,isActive,isCompetitiveSwimmer);
+            Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
             allMembers.add(member);
         }
     }
 
 
-    public ArrayList<Members> getAllMembers() {
+    public ArrayList<Members> getAllMembers()
+    {
         return allMembers;
     }
-    public ArrayList<Members> getJuniors() {
+
+    public ArrayList<Members> getJuniors()
+    {
         return juniors;
 
     }
-    public ArrayList<Members> getSeniors() {
+
+    public ArrayList<Members> getSeniors()
+    {
         return seniors;
     }
-    public ArrayList<Members> getPassiveMembers() {
+
+    public ArrayList<Members> getPassiveMembers()
+    {
         return passiveMembers;
     }
+
     public ArrayList<Members> getPentionist()
     {
         return pentionist;
     }
-
-
 
 }
 

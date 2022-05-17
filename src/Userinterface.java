@@ -72,11 +72,17 @@ public class Userinterface {
 
     public void kasserMenu() {
         System.out.println("""              
-                what would you like to do?  
-                                            
-                3) return to previous menu  
-                4) view list of members""");
+                what would you like to do?                                              
+                
+                1) view expeced income
+                2) view expected expenses
+                3) view payments pending/outstanding 
+                4) view list of members
+                5) return to previous menu 
+                """);
     }
+
+
 
     public void askName() {
         System.out.print("Name: ");

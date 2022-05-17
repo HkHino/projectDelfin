@@ -27,7 +27,6 @@ public class Controller
 
     public void showMainMenu() throws FileNotFoundException
     {
-
         userinterface.StartMenu();
 
         int input = userinterface.returnsUserInputInt();
@@ -42,6 +41,7 @@ public class Controller
         }
         else if (input == 3)
             userinterface.kasserMenu();
+            cashier.cashierMenu();
 
     }
 }
