@@ -170,7 +170,8 @@ public class ChairmanController
         userinterface.askGender();
         String inputGenderIsFemale = userinterface.returnsUserInputString();
         boolean genderIsFemale;
-        if (inputGenderIsFemale.equalsIgnoreCase("F")) {
+        if (inputGenderIsFemale.equalsIgnoreCase("F"))
+        {
             //System.out.println("you're a girl");
             genderIsFemale = true;
         }
