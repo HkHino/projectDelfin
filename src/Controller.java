@@ -46,7 +46,6 @@ public class Controller
             }
             else if (input == 3)
             {
-
                 cashier.cashierMenu();
             }
             else
