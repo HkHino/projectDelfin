@@ -11,7 +11,7 @@ public class TrainerController
             int input = userinterface.returnsUserInputInt();
             switch (input){
                 case 3: {
-                    //Return to previous menu
+                    //todo Return to previous menu
                     break;
                 }
                 case 4: {
