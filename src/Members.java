@@ -14,7 +14,7 @@ public class Members {
     private boolean isCompetitiveSwimmer;
 
     //methods
-    public int calculateAge() {
+    public void calculateAge() {
 
         int currentYear = LocalDateTime.now().getYear();
         int currentMonth = LocalDateTime.now().getMonthValue();
@@ -28,8 +28,6 @@ public class Members {
             age = currentYear - year;
         else
             age = currentYear - year - 1;
-
-        return age;
     }
 
     //constructor

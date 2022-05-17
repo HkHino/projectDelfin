@@ -270,7 +270,7 @@ public class ChairmanController
 
     public void saveListOfMembers() throws FileNotFoundException
     { //skriver til en fil
-        PrintStream out = new PrintStream("members.txt");
+        PrintStream out = new PrintStream("members.csv");
 
         for (Members member : allMembers)
         {
@@ -278,18 +278,21 @@ public class ChairmanController
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
     }
-    //todo find an adult to help figure out why this isnt working as intented?
     public void loadListOfMembers() throws FileNotFoundException
     { //Læser fra en fil
-        Scanner sc = new Scanner(new File("members.txt")).useDelimiter(";");
-        while (sc.hasNextLine())
-        {
-            String name = sc.next();
-            String dateOfBirth = sc.next();
-            String address = sc.next();
-            boolean isGenderIsFemale = sc.nextBoolean();
-            boolean isActive = sc.nextBoolean();
-            boolean isCompetitiveSwimmer = sc.nextBoolean();
+        Scanner sc = new Scanner(new File("members.csv"));
+        while (sc.hasNextLine()) {
+
+            String line = sc.nextLine();
+            //linje scanner
+            Scanner lineScanner = new Scanner(line).useDelimiter(";");
+
+            String name = lineScanner.next();
+            String dateOfBirth = lineScanner.next();
+            String address = lineScanner.next();
+            boolean isGenderIsFemale = lineScanner.nextBoolean();
+            boolean isActive = lineScanner.nextBoolean();
+            boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
 
             Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 

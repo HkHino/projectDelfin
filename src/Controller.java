@@ -9,6 +9,7 @@ public class Controller
     private Trainer trainer;
 
 
+
     public Controller() throws FileNotFoundException
     {
         //todo spørg en voksen!!! dette giver en nullpoint exception når programmet køres, hvordan kan det løses?
@@ -22,8 +23,7 @@ public class Controller
 
     public void run() throws FileNotFoundException
     {
-        //chairmanController.loadListOfMembers(); //todo move this to the correct place Basma knows where
-        //System.out.println(formand.getAllMembers());
+        chairmanController.loadListOfMembers();
         showMainMenu();
     }
 

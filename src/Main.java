@@ -4,8 +4,8 @@ import java.time.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Controller controller = new Controller();
 
+        Controller controller = new Controller();
         controller.run();
 
 

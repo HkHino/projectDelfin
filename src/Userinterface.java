@@ -24,6 +24,7 @@ public class Userinterface {
 
     public void StartMenu() {
         System.out.print("""
+                
                 Log in:
                 1) Chairman
                 2) Trainer
