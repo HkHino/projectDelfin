@@ -82,7 +82,7 @@ public class Cashier {
         int amountOfMembersJunior = chairmanController.getJuniors().size();
         int amountOfMembersSenior = chairmanController.getSeniors().size();
         int amountOfMembersPassive = chairmanController.getPassiveMembers().size();
-        int amountOfMembersPensionists = chairmanController.getPentionist().size();
+        int amountOfMembersPensionists = chairmanController.getPensioner().size();
 
         int incomePassiveMembers = amountOfMembersPassive * pricePassiveMember;
         int incomeMembersJunior = amountOfMembersJunior * priceJunior;
