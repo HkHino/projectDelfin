@@ -10,11 +10,11 @@ public class ChairmanController {
     private ArrayList<Members> allMembers = new ArrayList<>();
     private ArrayList<Members> activeMembers = new ArrayList<>();
     private ArrayList<Members> passiveMembers = new ArrayList<>();
-    private ArrayList<Members> competetiveSwimmers = new ArrayList<>();
-    private ArrayList<Members> exercicsers = new ArrayList<>();
+    private ArrayList<Members> competitiveSwimmers = new ArrayList<>();
+    private ArrayList<Members> exercises = new ArrayList<>();
     private ArrayList<Members> seniors = new ArrayList<>();
     private ArrayList<Members> juniors = new ArrayList<>();
-    private ArrayList<Members> pentionist = new ArrayList<>();
+    private ArrayList<Members> pensioner = new ArrayList<>();
 
     private Userinterface userinterface;
     private Cashier cashier;
@@ -204,7 +204,7 @@ public class ChairmanController {
         {
             seniors.add(member);
         } else {
-            pentionist.add(member);
+            pensioner.add(member);
         }
     }
 
@@ -217,9 +217,9 @@ public class ChairmanController {
 
     public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Members member) {
         if (isCompetitiveSwimmer)
-            competetiveSwimmers.add(member);
+            competitiveSwimmers.add(member);
         else
-            exercicsers.add(member);
+            exercises.add(member);
     }
 
     public void cancelSubscription() {
@@ -285,8 +285,8 @@ public class ChairmanController {
         return passiveMembers;
     }
 
-    public ArrayList<Members> getPentionist() {
-        return pentionist;
+    public ArrayList<Members> getPensioner() {
+        return pensioner;
     }
 
 }
