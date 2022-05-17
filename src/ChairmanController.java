@@ -133,7 +133,7 @@ public class ChairmanController
            case 3:{
                userinterface.askAddress();
                String address = userinterface.returnsUserInputString();
-               member.setAdress(address);
+               member.setAddress(address);
                break;
            }
            case 4:{
@@ -211,7 +211,7 @@ public class ChairmanController
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
 
 
-        System.out.println("you have successfully added a new member!: " + member.getName());
+        System.out.println("You have successfully added a new member!: " + member.getName());
     }
 
     public void addMemberToMemberList(Members member)

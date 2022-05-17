@@ -1,12 +1,11 @@
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Members {
 
     //attributes
     private String name;
     private int age;
-    private String adress;
+    private String address;
     private String dateOfBirth;
     private int membershipPrice;
 
@@ -38,7 +37,7 @@ public class Members {
     {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.adress = address;
+        this.address = address;
         this.genderIsFemale = genderIsFemale;
         this.isActive = isActive;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
@@ -56,7 +55,7 @@ public class Members {
         return name;
     }
     public String getAddress(){
-        return adress;
+        return address;
     }
 
     public boolean isGenderIsFemale(){
@@ -98,8 +97,8 @@ public class Members {
         this.age = age;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setActive(boolean active) {

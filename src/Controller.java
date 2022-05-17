@@ -46,12 +46,12 @@ public class Controller
             }
             else if (input == 3)
             {
-                userinterface.cashierMenu();
+
                 cashier.cashierMenu();
             }
             else
             {
-                System.out.println("thanks for using malaka software inc");
+                System.out.println("Thanks for using malaka software inc");
                 loop = false;
             }
 

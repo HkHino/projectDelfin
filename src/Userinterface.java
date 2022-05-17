@@ -27,21 +27,20 @@ public class Userinterface {
                 Log in:
                 1) Chairman
                 2) Trainer
-                3) cashier
+                3) Cashier
                 4) Close program
                 """);
     }
 
     public void trainerMenu() {
         System.out.println("""
-                you are logged in as Trainer
-                what would you like to do?
+                You are logged in as Trainer
+                What would you like to do?
                                
-                3) return to previous menu       
-                4) view list of members               
-                6) view top 5 (10?) list maybe make to lists?
+                3) Return to previous menu
+                4) View list of members
+                6) View top 5 (10?) list maybe make to lists?
                 7) Add time to competitive swimmer
-                                
                 """);
     }
 
@@ -51,9 +50,10 @@ public class Userinterface {
                              
                  1) Sign up new member
                  2) Unregister member
-                 3) Return to previous menu  
+                 3) Return to previous menu
                  4) Members
-                 5) Economy management """);
+                 5) Economy management
+                 """);
     }
 
     public void adjustMembersMenu() {
@@ -66,14 +66,14 @@ public class Userinterface {
 
     public void cashierMenu() {
         System.out.println("""    
-                you are logged in as Cashier          
-                what would you like to do?                                              
+                You are logged in as Cashier
+                What would you like to do?
                 
-                1) view expeced income
-                2) view expected expenses
-                3) view payments pending/outstanding 
-                4) view list of members
-                5) return to previous menu 
+                1) View expected income
+                2) View expected expenses
+                3) View payments pending/outstanding
+                4) View list of members
+                5) Return to previous menu
                 """);
     }
 
@@ -115,7 +115,7 @@ public class Userinterface {
         for (int i = 0; i < members.size(); i++) {
 
             if(members.get(i).isGenderIsFemale())
-                gender = "female";
+                gender = "Female";
             else
                 gender = "Male";
 
@@ -136,7 +136,7 @@ public class Userinterface {
 
     public void printMember(Members member){
         System.out.println("\n"+member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
-                member.isActive() + ", is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
+                member.isActive() + ", Is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
 
     }
 
@@ -153,8 +153,8 @@ public class Userinterface {
                 2) Date of birth
                 3) Address
                 4) Activity
-                5) Competitive/exerciser  
-                6) Gender 
+                5) Competitive/exerciser
+                6) Gender
                 """);
     }
 }
