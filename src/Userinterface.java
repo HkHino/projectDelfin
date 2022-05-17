@@ -134,7 +134,7 @@ public class Userinterface {
     }
 
     public void printMember(Members member){
-        System.out.println(member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
+        System.out.println("\n"+member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
                 member.isActive() + ", is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
 
     }
@@ -146,6 +146,7 @@ public class Userinterface {
 
     public void askWhatInfoToAdjust() {
         System.out.println("""
+                
                 Adjust information
                 1) Name
                 2) Date of birth

@@ -25,8 +25,6 @@ public class Members {
         int month = Integer.parseInt(dateOfBirth.substring(3, 5));
         int day = Integer.parseInt(dateOfBirth.substring(0, 2));
 
-        System.out.println(month);
-
         if (currentMonth >= month && currentDay >= day)
             age = currentYear - year;
         else
