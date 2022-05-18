@@ -56,4 +56,8 @@ public class Controller
 
         }
     }
+
+    public int getCashierMenu(){
+        cashier.totalExpectedIncome();
+    }
 }

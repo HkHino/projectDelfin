@@ -146,11 +146,11 @@ public class ChairmanController {
         userinterface.askAddress();
         String inputAddress = userinterface.returnsUserInputString();
 
-        String inputDateOfBirth="";
+        String inputDateOfBirth = "";
         while (inputDateOfBirth.length() != 10) {
             userinterface.askDateOfBirth();
             inputDateOfBirth = userinterface.returnsUserInputString();
-            }
+        }
 
 
         boolean askGenderLoop = true;
@@ -159,36 +159,41 @@ public class ChairmanController {
             userinterface.askGender();
             String inputGenderIsFemale = userinterface.returnsUserInputString();
 
-            if (inputGenderIsFemale.equalsIgnoreCase("F")) {
-                genderIsFemale = true;
-                askGenderLoop=false;
-
-            } else if (inputGenderIsFemale.equalsIgnoreCase("M")){
-                genderIsFemale = false;
-                askGenderLoop=false;
+            switch (inputGenderIsFemale) {
+                case "f": {
+                    genderIsFemale = true;
+                    askGenderLoop=false;
+                    break;
+                }
+                case "m": {
+                    genderIsFemale = false;
+                    askGenderLoop=false;
+                    break;
+                }
             }
         }
 
-        //TODO VIDERE MED FEJLHÅNDTERING
-        userinterface.askMemberacctivity();
-        String inputActivity = userinterface.returnsUserInputString();
-        boolean isActive;
-        if (inputActivity.equalsIgnoreCase("a"))
-            isActive = true;
-        else
-            isActive = false;
+            //TODO VIDERE MED FEJLHÅNDTERING
+            userinterface.askMemberacctivity();
+            String inputActivity = userinterface.returnsUserInputString();
+            boolean isActive;
+            if (inputActivity.equalsIgnoreCase("a"))
+                isActive = true;
+            else
+                isActive = false;
 
-        userinterface.askIsCompetitive();
-        String inputEliteSwimmer = userinterface.returnsUserInputString();
-        boolean isCompetitiveSwimmer;
-        if (inputEliteSwimmer.equalsIgnoreCase("yes"))
-            isCompetitiveSwimmer = true;
-        else
-            isCompetitiveSwimmer = false;
+            userinterface.askIsCompetitive();
+            String inputEliteSwimmer = userinterface.returnsUserInputString();
+            boolean isCompetitiveSwimmer;
+            if (inputEliteSwimmer.equalsIgnoreCase("yes"))
+                isCompetitiveSwimmer = true;
+            else
+                isCompetitiveSwimmer = false;
 
-        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+            createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
 
-    }
+        }
+
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
         Members member = new Members(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
@@ -198,7 +203,6 @@ public class ChairmanController {
         addJuniorOrSenior(member.getAge(), member);
         addActiveOrPassive(isActive, member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
-
 
         userinterface.newMemberSuccesful(member.getName());
     }
