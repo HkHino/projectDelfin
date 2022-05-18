@@ -26,10 +26,12 @@ public class Cashier {
     public Cashier(Userinterface userinterface) {
         this.userinterface = userinterface;
 
+
     }
 
     public void cashierMenu() {
         boolean loop = true;
+        userinterface.loggedInAsCashier();
 
         while (loop) {
             userinterface.cashierMenu();
@@ -45,7 +47,7 @@ public class Cashier {
                     paymentchecker(); //todo attatch to members list, attatch random checker to members to simulate irl payment issues
                     break;
                 case 4:
-                    System.out.println(chairmanController.getAllMembers());
+                    userinterface.viewListOfMembers(chairmanController.getAllMembers());
                     break;
                 case 5:
 
@@ -84,7 +86,7 @@ public class Cashier {
 
     }
 
-    public int totalExpectedIncome() {
+    public void totalExpectedIncome() {
         int amountOfMembersJunior = chairmanController.getJuniors().size();
         int amountOfMembersSenior = chairmanController.getSeniors().size();
         int amountOfMembersPassive = chairmanController.getPassiveMembers().size();
@@ -97,7 +99,6 @@ public class Cashier {
 
         int totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
         System.out.println(totalIncome + "kr");
-        return totalIncome;
     }
 
     public void paymentchecker() {

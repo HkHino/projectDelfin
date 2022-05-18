@@ -201,12 +201,15 @@ public class ChairmanController {
         Members member = new Members(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
         addMemberToMemberList(member);
+        addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
+        userinterface.newMemberSuccesful(member.getName());
+    }
+
+    public void addMemberToArraylists(Members member, boolean isActive, boolean isCompetitiveSwimmer){
         addJuniorOrSenior(member.getAge(), member);
         addActiveOrPassive(isActive, member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
-
-        userinterface.newMemberSuccesful(member.getName());
     }
 
     public void addMemberToMemberList(Members member) {
@@ -281,6 +284,7 @@ public class ChairmanController {
             Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
             allMembers.add(member);
+            addMemberToArraylists(member,isActive,isCompetitiveSwimmer);
         }
     }
 

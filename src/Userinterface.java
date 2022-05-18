@@ -67,15 +67,16 @@ public class Userinterface {
 
     public void cashierMenu() {
         System.out.println("""    
-                You are logged in as Cashier
-                What would you like to do?
-                
+
                 1) View expected income
                 2) View expected expenses
                 3) View payments pending/outstanding
                 4) View list of members
                 5) Return to previous menu
                 """);
+    }
+    public void loggedInAsCashier(){
+        System.out.println("Logged in as Cashier");
     }
 
 
@@ -133,6 +134,7 @@ public class Userinterface {
             System.out.println(members.get(i).getName() + ", "+ members.get(i).getAge() + ", "+
                     activity + ", " + memberStatus+", "+gender+", "+ members.get(i).getAddress());
         }
+        System.out.println();
     }
 
     public void printMember(Members member){
