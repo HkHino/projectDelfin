@@ -48,8 +48,6 @@ public class ChairmanController {
 
                 case 4: {
                     cashier.cashierMenu();
-                    //todo add access to economics part
-                    //todo could be done as a work around by passing just the int we wish to display
                     break;
                 }
 

@@ -41,10 +41,11 @@ public class Cashier {
                     totalExpectedIncome();
                     break;
                 case 2:
+                    System.out.println("expenses option coming soon to a program near you!");
                     //todo feature coming soon to a program near you
                     break;
                 case 3:
-                    paymentchecker(); //todo attatch to members list, attatch random checker to members to simulate irl payment issues
+                    paymentList();
                     break;
                 case 4:
                     userinterface.viewListOfMembers(chairmanController.getAllMembers());
@@ -78,11 +79,21 @@ public class Cashier {
 
     public void paymentList() {
         memberPayment();
+        paymentchecker();
+        String paymentstatus;
 
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
+            if (chairmanController.getAllMembers().get(i).isHasPaid() == true)
+            {
+                paymentstatus= "This member has paid";
+            }
+            else {
+                paymentstatus="This member has not paid yet";
+            }
             System.out.println(chairmanController.getAllMembers().get(i).getName() + ", Payment: " +
-                    chairmanController.getAllMembers().get(i).getMembershipPrice());
-        } //todo attatch random roller to this here class
+            chairmanController.getAllMembers().get(i).getMembershipPrice() +
+            " Payment status for this member is: " + paymentstatus);
+        }
 
     }
 
@@ -101,14 +112,24 @@ public class Cashier {
         System.out.println(totalIncome + "kr");
     }
 
+
     public void paymentchecker() {
         Random rand = new Random();
-        int randNum = rand.nextInt((10) + 1);
-        if (randNum > 2)
-            hasPaid = false;
-        else
-            hasPaid = true;
+
+        for (int i = 0; i < chairmanController.getAllMembers().size(); i++)
+        {
+            int randNum = rand.nextInt((10) + 1);
+            if (randNum < 2)
+                hasPaid = false;
+            else
+                hasPaid = true;
+
+            chairmanController.getAllMembers().get(i).setHasPaid(hasPaid);
+
+        }
     }
+
+
 
 }
 

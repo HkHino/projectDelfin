@@ -10,7 +10,6 @@ public class Controller
 
     public Controller() throws FileNotFoundException
     {
-        //todo spørg en voksen!!! dette giver en nullpoint exception når programmet køres, hvordan kan det løses?
         userinterface = new Userinterface();
         cashier = new Cashier(userinterface);
         chairmanController = new ChairmanController(userinterface, cashier);

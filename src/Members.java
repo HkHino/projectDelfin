@@ -12,6 +12,7 @@ public class Members {
     private boolean genderIsFemale;
     private boolean isActive;
     private boolean isCompetitiveSwimmer;
+    private boolean hasPaid;
 
     //methods
     public void calculateAge() {
@@ -105,6 +106,14 @@ public class Members {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    public void setHasPaid(boolean hasPaid)
+    {
+        this.hasPaid = hasPaid;
+    }
+    public boolean isHasPaid()
+    {
+        return hasPaid;
     }
 }
 
