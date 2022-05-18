@@ -62,6 +62,7 @@ public class Userinterface {
                 1) View member list
                 2) Change member data/status
                 3) Top 5 competitive swimmers
+                4) Return to previous menu
                 """);
     }
 
@@ -78,7 +79,6 @@ public class Userinterface {
     public void loggedInAsCashier(){
         System.out.println("Logged in as Cashier");
     }
-
 
 
     public void askName() {
@@ -124,7 +124,7 @@ public class Userinterface {
             if(members.get(i).isActive())
                 activity = "Active";
             else
-                activity = "Passiv";
+                activity = "Passive";
 
             if(members.get(i).isCompetitiveSwimmer())
                 memberStatus = "Competitive Swimmer";
@@ -161,7 +161,7 @@ public class Userinterface {
                 """);
     }
 
-    public void newMemberSuccesful(String name){
+    public void newMembersuccessful(String name){
         System.out.println("You have successfully added a new member!: " + name);
     }
 }
