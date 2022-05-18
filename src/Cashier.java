@@ -15,11 +15,17 @@ public class Cashier {
 
 
     private Userinterface userinterface;
+
+    public void setChairmanController(ChairmanController chairmanController)
+    {
+        this.chairmanController = chairmanController;
+    }
+
     private ChairmanController chairmanController;
 
-    public Cashier(Userinterface userinterface, ChairmanController chairmanController) {
+    public Cashier(Userinterface userinterface) {
         this.userinterface = userinterface;
-        this.chairmanController = chairmanController;
+
     }
 
     public void cashierMenu() {
@@ -78,7 +84,7 @@ public class Cashier {
 
     }
 
-    public void totalExpectedIncome() {
+    public int totalExpectedIncome() {
         int amountOfMembersJunior = chairmanController.getJuniors().size();
         int amountOfMembersSenior = chairmanController.getSeniors().size();
         int amountOfMembersPassive = chairmanController.getPassiveMembers().size();
@@ -91,6 +97,7 @@ public class Cashier {
 
         int totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
         System.out.println(totalIncome + "kr");
+        return totalIncome;
     }
 
     public void paymentchecker() {

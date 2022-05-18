@@ -8,19 +8,17 @@ public class Controller
     private Userinterface userinterface;
     private Trainer trainer;
 
-
-
     public Controller() throws FileNotFoundException
     {
         //todo spørg en voksen!!! dette giver en nullpoint exception når programmet køres, hvordan kan det løses?
         userinterface = new Userinterface();
+        cashier = new Cashier(userinterface);
         chairmanController = new ChairmanController(userinterface, cashier);
+        cashier.setChairmanController(chairmanController);
         trainerController = new TrainerController(userinterface);
-        cashier = new Cashier(userinterface, chairmanController);
         trainer = new Trainer("Bob", 1);
 
     }
-
     public void run() throws FileNotFoundException
     {
         chairmanController.loadListOfMembers();
@@ -55,9 +53,5 @@ public class Controller
             }
 
         }
-    }
-
-    public int getCashierMenu(){
-        cashier.totalExpectedIncome();
     }
 }
