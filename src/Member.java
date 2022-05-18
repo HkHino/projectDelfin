@@ -1,6 +1,4 @@
-import java.time.LocalDateTime;
-
-public class Members {
+public class Member {
 
     //attributes
     private String name;
@@ -116,4 +114,3 @@ public class Members {
         return hasPaid;
     }
 }
-

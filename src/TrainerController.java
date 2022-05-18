@@ -3,12 +3,12 @@ public class TrainerController
     private Userinterface userinterface;
 
     private boolean loop = true;
-
+    int input = userinterface.returnsUserInputInt();
     public void trainerMenu(){
 
         while (loop){
             userinterface.trainerMenu();
-            int input = userinterface.returnsUserInputInt();
+
             switch (input){
                 case 3: {
                     //todo Return to previous menu
@@ -32,6 +32,9 @@ public class TrainerController
     }
 
     public void addSwimmingTimes(){
+    if(input == 7){
+    
+    }
 
     }
 
