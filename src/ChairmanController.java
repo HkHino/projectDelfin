@@ -79,7 +79,9 @@ public class ChairmanController {
             }
             case 3:
                 //todo top 5
+            case 4:
 
+                break;
         }
 
     }
@@ -281,7 +283,7 @@ public class ChairmanController {
 
             Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
-            addMemberToMemberList(member);
+            allMembers.add(member);
             addMemberToArraylists(member,isActive,isCompetitiveSwimmer);
         }
     }

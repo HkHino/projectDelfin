@@ -161,7 +161,7 @@ public class Userinterface {
                 """);
     }
 
-    public void newMembersuccessful(String name){
+    public void newMemberSuccesful(String name) {
         System.out.println("You have successfully added a new member!: " + name);
     }
 }
