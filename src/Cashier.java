@@ -9,8 +9,8 @@ public class Cashier {
     private int priceSenior = 1600;
 
     private int pensionistAge = 65;
-    private int pensionerDiscount = 100 - 25;
-    private int pricePensionist = (1600 * pensionerDiscount) / 100;
+    private double pensionerDiscount = 0.75;
+    private double pricePensionist = 1600 * pensionerDiscount;
     private int pricePassiveMember = 500;
 
 
@@ -70,10 +70,16 @@ public class Cashier {
         }
 
         for (int i = 0; i < chairmanController.getSeniors().size(); i++) {
-            if (chairmanController.getSeniors().get(i).getAge() < pensionistAge)
+           // if (chairmanController.getSeniors().get(i).getAge() < pensionistAge)
+               // chairmanController.getSeniors().get(i).setMembershipPrice(priceSenior);
+            //else
+            if(chairmanController.getSeniors().get(i).isActive()==true)
                 chairmanController.getSeniors().get(i).setMembershipPrice(priceSenior);
-            else
-                chairmanController.getSeniors().get(i).setMembershipPrice(pricePensionist);
+        }
+
+        for (int i = 0; i < chairmanController.getPensioner().size(); i++) {
+            if(chairmanController.getPensioner().get(i).isActive()==true)
+                chairmanController.getPensioner().get(i).setMembershipPrice(pricePensionist);
         }
     }
 
@@ -106,9 +112,9 @@ public class Cashier {
         int incomePassiveMembers = amountOfMembersPassive * pricePassiveMember;
         int incomeMembersJunior = amountOfMembersJunior * priceJunior;
         int incomeMembersSenior = amountOfMembersSenior * priceSenior;
-        int incomeMembersPensionists = amountOfMembersPensionists * pricePensionist;
+        double incomeMembersPensionists = amountOfMembersPensionists * pricePensionist;
 
-        int totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
+        double totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
         System.out.println(totalIncome + "kr");
     }
 

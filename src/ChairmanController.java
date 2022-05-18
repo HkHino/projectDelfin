@@ -281,7 +281,7 @@ public class ChairmanController {
 
             Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
-            allMembers.add(member);
+            addMemberToMemberList(member);
             addMemberToArraylists(member,isActive,isCompetitiveSwimmer);
         }
     }

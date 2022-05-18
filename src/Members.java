@@ -7,7 +7,7 @@ public class Members {
     private int age;
     private String address;
     private String dateOfBirth;
-    private int membershipPrice;
+    private double membershipPrice;
 
     private boolean genderIsFemale;
     private boolean isActive;
@@ -69,14 +69,14 @@ public class Members {
         return isCompetitiveSwimmer;
     }
 
-    public int getMembershipPrice() {
+    public double getMembershipPrice() {
         return membershipPrice;
     }
 
     public String getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setMembershipPrice(int membershipPrice) {
+    public void setMembershipPrice(double membershipPrice) {
         this.membershipPrice = membershipPrice;
     }
 
