@@ -138,9 +138,28 @@ public class Userinterface {
     }
 
     public void printMember(Member member){
-        System.out.println("\n"+member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
-                member.isActive() + ", Is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
+        String gender;
+        String activity;
+        String memberStatus;
+        if(member.isGenderIsFemale() == true)
+        {
+            gender = "Female";
+        }
+        else
+            gender = "Male";
 
+        if(member.isActive() == true)
+            activity = "Is active";
+        else
+            activity = "Is passive";
+
+        if(member.isCompetitiveSwimmer() == true)
+            memberStatus = "Is competitive Swimmer";
+        else
+            memberStatus = "Is exerciser";
+
+        System.out.println(member.getName() + ", " + member.getAge() + ", " +
+                activity + ", " + memberStatus +", "+ gender +", "+ member.getAddress());
     }
 
     public void askFindMemberToAdjust() {

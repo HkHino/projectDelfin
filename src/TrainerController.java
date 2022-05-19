@@ -10,21 +10,25 @@ public class TrainerController
             userinterface.trainerMenu();
 
             switch (input){
+                case 1: {
+
+                    break;
+                }
+                case 2: {
+
+                    break;
+                }
                 case 3: {
-                    //todo Return to previous menu
+
                     break;
                 }
                 case 4: {
-
+                    addSwimmingTimes();
+                    break;
                 }
                 case 5: {
 
-                }
-                case 6: {
-
-                }
-                case 7: {
-                    addSwimmingTimes();
+                    loop = false;
                     break;
                 }
             }
