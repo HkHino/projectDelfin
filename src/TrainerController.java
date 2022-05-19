@@ -16,25 +16,24 @@ public class TrainerController
             userinterface.trainerMenu();
 
             switch (input){
+                case 1: {
+                    showJuniorSwimmers();
+                    break;
+                }
+                case 2: {
+                    showSeniorSwimmers();
+                    break;
+                }
                 case 3: {
-                    System.out.println("Fej");
+                    topSwimmers();
                     break;
                 }
                 case 4: {
-                    System.out.println("hej");
-                    break;
-                }
-                case 5: {
-                    System.out.println("nej");
-                    break;
-                }
-                case 6: {
                     addSwimmingTimes();
                     loop=false;
                     break;
                 }
-                case 7: {
-
+                case 5: {
                     loop = false;
                     break;
                 }
@@ -43,7 +42,17 @@ public class TrainerController
     }
     public void addSwimmingTimes(){
         //int memberID = userinterface.memberId(); //todo fix this at some point
+    }
 
+    public void showJuniorSwimmers(){ //TODO show junior swimmers
+
+    }
+
+    public void showSeniorSwimmers(){ //TODO show senior swimmers
+
+    }
+
+    public void topSwimmers(){ //TODO show top 5 swimmers
 
     }
   }

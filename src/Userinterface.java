@@ -39,10 +39,11 @@ public class Userinterface {
                                 
                 What would you like to do?
                                
-                3) Return to previous menu
-                4) View list of members
-                5) View top 5 (10?) list maybe make to lists?
-                6) Add time to competitive swimmer
+                1) View junior swimmers
+                2) View senior swimmers
+                3) View top 5
+                4) Add time to competitive swimmer
+                5) Return to previous menu
                 """);
     }
 
