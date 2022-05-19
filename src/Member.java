@@ -4,6 +4,7 @@ public class Member {
 
     //attributes
     private String name;
+    private int memberId;
     private int age;
     private String address;
     private String dateOfBirth;
@@ -115,5 +116,15 @@ public class Member {
     public boolean isHasPaid()
     {
         return hasPaid;
+    }
+
+    public int getMemberId()
+    {
+        return memberId;
+    }
+
+    public void setMemberId(int memberId)
+    {
+        this.memberId = memberId;
     }
 }

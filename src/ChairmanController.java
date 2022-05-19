@@ -141,6 +141,7 @@ public class ChairmanController {
     }
 
     public void signUpNewMember() {
+        userinterface.askMemberId()
 
         userinterface.askName();
         String inputName = userinterface.returnsUserInputString();
@@ -155,7 +156,7 @@ public class ChairmanController {
         boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
 
 
-        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+        createNewMember(inputName, memberId, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
     }
 
     public String dateOfBirth() {
@@ -221,7 +222,8 @@ public class ChairmanController {
         return false;
     }
 
-    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
+
+    public void createNewMember(String name, int memberId, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
         Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
         addMemberToMemberList(member);
@@ -340,6 +342,8 @@ public class ChairmanController {
     public ArrayList<Member> getPensioner() {
         return pensioner;
     }
+
+
 
 }
 

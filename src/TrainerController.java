@@ -1,45 +1,50 @@
 public class TrainerController
 {
+
     private Userinterface userinterface;
-
     private boolean loop = true;
-    int input = userinterface.returnsUserInputInt();
-    public void trainerMenu(){
 
+    public TrainerController(Userinterface userinterface)
+    {
+        this.userinterface = userinterface;
+    }
+
+    public void trainerMenu(){
+        userinterface.trainerMenu();
+        int input = userinterface.returnsUserInputInt();
         while (loop){
             userinterface.trainerMenu();
 
             switch (input){
-                case 1: {
-
-                    break;
-                }
-                case 2: {
-
-                    break;
-                }
                 case 3: {
-
+                    System.out.println("Fej");
                     break;
                 }
                 case 4: {
-                    addSwimmingTimes();
+                    System.out.println("hej");
                     break;
                 }
                 case 5: {
-                    //this is an empty loop
+                    System.out.println("nej");
+                    break;
+                }
+                case 6: {
+                    addSwimmingTimes();
+                    loop=false;
+                    break;
+                }
+                case 7: {
+
                     loop = false;
                     break;
                 }
             }
         }
     }
-
     public void addSwimmingTimes(){
-    if(input == 7){
-    
-    }
+        int memberID = userinterface.askMemberId();
+
 
     }
+  }
 
-}

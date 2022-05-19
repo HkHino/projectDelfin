@@ -41,8 +41,8 @@ public class Userinterface {
                                
                 3) Return to previous menu
                 4) View list of members
-                6) View top 5 (10?) list maybe make to lists?
-                7) Add time to competitive swimmer
+                5) View top 5 (10?) list maybe make to lists?
+                6) Add time to competitive swimmer
                 """);
     }
 
@@ -207,5 +207,11 @@ public class Userinterface {
 
     public void printMemberNames(ArrayList<Member> members, int i) {
         System.out.println(members.get(i).getName());
+    }
+
+    public int askMemberId(){
+        System.out.println("Please type in the member ID");
+        int memberID = scanner.nextInt();
+        return memberID;
     }
 }
