@@ -97,7 +97,7 @@ public class ChairmanController {
         }
     }
 
-    public void adjustMemberInfo(Member member) { //TODO fix says "female = true/false"
+    public void adjustMemberInfo(Member member) {
         userinterface.printMember(member);
         userinterface.askWhatInfoToAdjust();
         int input = userinterface.returnsUserInputInt();
