@@ -18,10 +18,11 @@ public class ChairmanController {
 
     private Userinterface userinterface;
     private Cashier cashier;
+    private int lastIDnumber;
 
     //constructor
 
-    public ChairmanController(Userinterface userinterface, Cashier cashier) {
+    public ChairmanController(Userinterface userinterface, Cashier cashier) throws FileNotFoundException {
         this.userinterface = userinterface;
         this.cashier = cashier;
     }
@@ -140,7 +141,7 @@ public class ChairmanController {
 
     }
 
-    public void signUpNewMember() {
+    public void signUpNewMember() throws FileNotFoundException {
 
 
         userinterface.askName();
@@ -224,8 +225,9 @@ public class ChairmanController {
     }
 
 
-    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
-        int MemberNumberGen = 0; //todo værdi skal indlæses fra en nummerfil.
+    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) throws FileNotFoundException {
+        int MemberNumberGen = loadLastIDnumber(); //todo værdi skal indlæses fra en nummerfil.
+        saveLastIDnumber(MemberNumberGen); //saver til fil
 
         Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, MemberNumberGen);
         MemberNumberGen ++;
@@ -301,6 +303,20 @@ public class ChairmanController {
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
     }
+
+    public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
+        PrintStream out = new PrintStream("memberID.txt");
+        out.println(MemberNumberGen);
+    }
+
+    public int loadLastIDnumber() throws FileNotFoundException {
+        Scanner sc = new Scanner(new File("members.csv"));
+        while (sc.hasNextLine()) {
+            lastIDnumber = sc.nextInt();
+        }
+        return lastIDnumber;
+    }
+
 
     public void loadListOfMembers() throws FileNotFoundException { //Læser fra en fil
         Scanner sc = new Scanner(new File("members.csv"));
