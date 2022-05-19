@@ -42,7 +42,7 @@ public class TrainerController
         }
     }
     public void addSwimmingTimes(){
-        int memberID = userinterface.askMemberId();
+        //int memberID = userinterface.memberId(); //todo fix this at some point
 
 
     }

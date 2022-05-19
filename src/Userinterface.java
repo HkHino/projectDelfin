@@ -209,9 +209,7 @@ public class Userinterface {
         System.out.println(members.get(i).getName());
     }
 
-    public int askMemberId(){
-        System.out.println("Please type in the member ID");
-        int memberID = scanner.nextInt();
-        return memberID;
+    public void memberId(){
+        System.out.println("this is your member ID");
     }
 }

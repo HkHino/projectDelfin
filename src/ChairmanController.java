@@ -225,10 +225,10 @@ public class ChairmanController {
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
-        int numberGen = 5; //todo værdi skal indlæses fra en nummerfil.
+        int MemberNumberGen = 0; //todo værdi skal indlæses fra en nummerfil.
 
-        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, numberGen);
-                numberGen ++;
+        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, MemberNumberGen);
+        MemberNumberGen ++;
         addMemberToMemberList(member);
         addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
