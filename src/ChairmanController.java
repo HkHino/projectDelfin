@@ -97,7 +97,7 @@ public class ChairmanController {
         }
     }
 
-    public void adjustMemberInfo(Member member) {
+    public void adjustMemberInfo(Member member) { //TODO fix says "female = true/false"
         userinterface.printMember(member);
         userinterface.askWhatInfoToAdjust();
         int input = userinterface.returnsUserInputInt();
@@ -176,7 +176,7 @@ public class ChairmanController {
         }
 
             //TODO VIDERE MED FEJLHÅNDTERING
-            userinterface.askMemberacctivity();
+            userinterface.askMemberactivity();
             String inputActivity = userinterface.returnsUserInputString();
             boolean isActive;
             if (inputActivity.equalsIgnoreCase("a"))
@@ -203,7 +203,7 @@ public class ChairmanController {
         addMemberToMemberList(member);
         addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
-        userinterface.newMemberSuccesful(member.getName());
+        userinterface.newMemberSuccessful(member.getName());
     }
 
     public void addMemberToArraylists(Member member, boolean isActive, boolean isCompetitiveSwimmer){
@@ -242,7 +242,13 @@ public class ChairmanController {
     }
 
     public void cancelSubscription() {
+
         userinterface.cancelSub();
+        userinterface.currentMembersNames();
+        for (int i = 0; i < allMembers.size(); i++) {
+            System.out.println(allMembers.get(i).getName());
+        }
+        System.out.println();
         userinterface.askName();
         String name = userinterface.returnsUserInputString();
 
