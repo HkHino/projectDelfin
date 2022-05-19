@@ -45,7 +45,7 @@ public class Controller
             {
                 cashier.cashierMenu();
             }
-            else
+            else if (input == 4)
             {
                 System.out.println("Thanks for using malaka software inc");
                 loop = false;

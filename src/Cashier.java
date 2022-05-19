@@ -12,9 +12,8 @@ public class Cashier {
     private double pensionerDiscount = 0.75;
     private double pricePensionist = 1600 * pensionerDiscount;
     private int pricePassiveMember = 500;
+
     private ChairmanController chairmanController;
-
-
     private Userinterface userinterface;
 
     public void setChairmanController(ChairmanController chairmanController) {
@@ -24,7 +23,6 @@ public class Cashier {
 
     public Cashier(Userinterface userinterface) {
         this.userinterface = userinterface;
-
     }
 
     public void cashierMenu() {
@@ -85,13 +83,11 @@ public class Cashier {
         userinterface.paymentStatus();
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
             if (chairmanController.getAllMembers().get(i).isHasPaid() == true) {
-                paymentstatus = "This member has paid";
+                paymentstatus = "Has paid";
             } else {
-                paymentstatus = "This member has not paid yet";
+                paymentstatus = "Not paid yet";
             }
-            System.out.println(chairmanController.getAllMembers().get(i).getName() + ", Payment: " +
-                    chairmanController.getAllMembers().get(i).getMembershipPrice() +
-                    " Payment status for this member is: " + paymentstatus);
+            userinterface.printPaymentList(chairmanController.getAllMembers(),i,paymentstatus);
         }
 
     }

@@ -197,4 +197,15 @@ public class Userinterface {
     public void printTotalIncome(double totalIncome) {
         System.out.println(totalIncome + "kr. income");
     }
+
+    public void printPaymentList(ArrayList<Member> members, int i, String paymentstatus) {
+
+        System.out.println(members.get(i).getName() + ", Payment: " +
+                members.get(i).getMembershipPrice() +
+                " kr. Payment status: " + paymentstatus);
+    }
+
+    public void printMemberNames(ArrayList<Member> members, int i) {
+        System.out.println(members.get(i).getName());
+    }
 }

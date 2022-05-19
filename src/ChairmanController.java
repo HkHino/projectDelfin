@@ -221,7 +221,6 @@ public class ChairmanController {
         return false;
     }
 
-
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
         Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
@@ -271,7 +270,8 @@ public class ChairmanController {
         userinterface.cancelSub();
         userinterface.currentMembersNames();
         for (int i = 0; i < allMembers.size(); i++) {
-            System.out.println(allMembers.get(i).getName());
+            userinterface.printMemberNames(allMembers,i);
+
         }
         System.out.println();
         userinterface.askName();
