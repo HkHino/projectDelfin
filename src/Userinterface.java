@@ -193,4 +193,8 @@ public class Userinterface {
     public void newMemberSuccessful(String name) {
         System.out.println("You have successfully added a new member!: " + name);
     }
+
+    public void printTotalIncome(double totalIncome) {
+        System.out.println(totalIncome + "kr. income");
+    }
 }

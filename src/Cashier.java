@@ -12,20 +12,18 @@ public class Cashier {
     private double pensionerDiscount = 0.75;
     private double pricePensionist = 1600 * pensionerDiscount;
     private int pricePassiveMember = 500;
+    private ChairmanController chairmanController;
 
 
     private Userinterface userinterface;
 
-    public void setChairmanController(ChairmanController chairmanController)
-    {
+    public void setChairmanController(ChairmanController chairmanController) {
         this.chairmanController = chairmanController;
     }
 
-    private ChairmanController chairmanController;
 
     public Cashier(Userinterface userinterface) {
         this.userinterface = userinterface;
-
 
     }
 
@@ -37,7 +35,7 @@ public class Cashier {
 
             switch (userinterface.returnsUserInputInt()) {
                 case 1:
-                    totalExpectedIncome();
+                    userinterface.printTotalIncome(totalExpectedIncome());
                     break;
                 case 2:
                     System.out.println("expenses option coming soon to a program near you!");
@@ -69,15 +67,12 @@ public class Cashier {
         }
 
         for (int i = 0; i < chairmanController.getSeniors().size(); i++) {
-           // if (chairmanController.getSeniors().get(i).getAge() < pensionistAge)
-               // chairmanController.getSeniors().get(i).setMembershipPrice(priceSenior);
-            //else
-            if(chairmanController.getSeniors().get(i).isActive()==true)
+            if (chairmanController.getSeniors().get(i).isActive() == true)
                 chairmanController.getSeniors().get(i).setMembershipPrice(priceSenior);
         }
 
         for (int i = 0; i < chairmanController.getPensioner().size(); i++) {
-            if(chairmanController.getPensioner().get(i).isActive()==true)
+            if (chairmanController.getPensioner().get(i).isActive() == true)
                 chairmanController.getPensioner().get(i).setMembershipPrice(pricePensionist);
         }
     }
@@ -89,20 +84,32 @@ public class Cashier {
 
         userinterface.paymentStatus();
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
-            if (chairmanController.getAllMembers().get(i).isHasPaid() == true)
-            {
-                paymentstatus= "This member has paid";
-            }
-            else {
-                paymentstatus="This member has not paid yet";
+            if (chairmanController.getAllMembers().get(i).isHasPaid() == true) {
+                paymentstatus = "This member has paid";
+            } else {
+                paymentstatus = "This member has not paid yet";
             }
             System.out.println(chairmanController.getAllMembers().get(i).getName() + ", Payment: " +
-            chairmanController.getAllMembers().get(i).getMembershipPrice() +
-            " Payment status for this member is: " + paymentstatus);
+                    chairmanController.getAllMembers().get(i).getMembershipPrice() +
+                    " Payment status for this member is: " + paymentstatus);
         }
 
     }
 
+    public double totalExpectedIncome() {
+        double totalIcome = 0;
+        
+        memberPayment();
+        double memberPrice;
+        for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
+            memberPrice = chairmanController.getAllMembers().get(i).getMembershipPrice();
+            totalIcome = totalIcome + memberPrice;
+        }
+        return totalIcome;
+
+    }
+
+    /*
     public void totalExpectedIncome() {
         int amountOfMembersJunior = chairmanController.getJuniors().size();
         int amountOfMembersSenior = chairmanController.getSeniors().size();
@@ -119,11 +126,12 @@ public class Cashier {
         System.out.println(totalIncome + "kr");
     }
 
+     */
+
     public void paymentchecker() {
         Random rand = new Random();
 
-        for (int i = 0; i < chairmanController.getAllMembers().size(); i++)
-        {
+        for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
             int randNum = rand.nextInt((10) + 1);
             if (randNum < 2)
                 hasPaid = false;
@@ -134,7 +142,6 @@ public class Cashier {
 
         }
     }
-
 
 
 }
