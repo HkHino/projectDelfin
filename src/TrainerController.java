@@ -16,24 +16,24 @@ public class TrainerController
             userinterface.trainerMenu();
 
             switch (input){
-                case 1: {
-
-                    break;
-                }
-                case 2: {
-
-                    break;
-                }
                 case 3: {
-
+                    System.out.println("Fej");
                     break;
                 }
                 case 4: {
+                    System.out.println("hej");
+                    break;
+                }
+                case 5: {
+                    System.out.println("nej");
+                    break;
+                }
+                case 6: {
                     addSwimmingTimes();
                     loop=false;
                     break;
                 }
-                case 5: {
+                case 7: {
 
                     loop = false;
                     break;
@@ -41,5 +41,10 @@ public class TrainerController
             }
         }
     }
-    public void addSwimmingTimes(){}
-}
+    public void addSwimmingTimes(){
+        int memberID = userinterface.askMemberId();
+
+
+    }
+  }
+

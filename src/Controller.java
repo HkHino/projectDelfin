@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Controller
 {
@@ -16,6 +17,7 @@ public class Controller
         cashier.setChairmanController(chairmanController);
         trainerController = new TrainerController(userinterface);
         trainer = new Trainer("Bob", 1);
+
 
     }
     public void run() throws FileNotFoundException
