@@ -1,11 +1,17 @@
 public class TrainerController
 {
+
     private Userinterface userinterface;
-
     private boolean loop = true;
-    int input = userinterface.returnsUserInputInt();
-    public void trainerMenu(){
 
+    public TrainerController(Userinterface userinterface)
+    {
+        this.userinterface = userinterface;
+    }
+
+    public void trainerMenu(){
+        userinterface.trainerMenu();
+        int input = userinterface.returnsUserInputInt();
         while (loop){
             userinterface.trainerMenu();
 
@@ -25,26 +31,11 @@ public class TrainerController
                 }
                 case 7: {
                     addSwimmingTimes();
+                    loop=false;
                     break;
                 }
             }
         }
     }
-
-    public void addSwimmingTimes(){
-    if(input == 7){
-    
-    }
-
-    }
-/*
-    public TrainerController(Userinterface userinterface){
-        this.userinterface = userinterface;
-    }
-
-
-    public TrainerController()
-    {}
-
- */
+    public void addSwimmingTimes(){}
 }
