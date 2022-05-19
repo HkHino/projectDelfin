@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class Member {
 
     //attributes
@@ -30,9 +32,10 @@ public class Member {
     }
 
     //constructor
-    public Members(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
+    public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
     {
         this.name = name;
+
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.genderIsFemale = genderIsFemale;

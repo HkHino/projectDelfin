@@ -37,10 +37,14 @@ public class TrainerController
     }
 
     }
-
+/*
     public TrainerController(Userinterface userinterface){
         this.userinterface = userinterface;
     }
+
+
     public TrainerController()
     {}
+
+ */
 }

@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class ChairmanController {
 
     //members
-    private ArrayList<Members> allMembers = new ArrayList<>();
-    private ArrayList<Members> activeMembers = new ArrayList<>();
-    private ArrayList<Members> passiveMembers = new ArrayList<>();
-    private ArrayList<Members> competitiveSwimmers = new ArrayList<>();
-    private ArrayList<Members> exercises = new ArrayList<>();
-    private ArrayList<Members> seniors = new ArrayList<>();
-    private ArrayList<Members> juniors = new ArrayList<>();
-    private ArrayList<Members> pensioner = new ArrayList<>();
+    private ArrayList<Member> allMembers = new ArrayList<>();
+    private ArrayList<Member> activeMembers = new ArrayList<>();
+    private ArrayList<Member> passiveMembers = new ArrayList<>();
+    private ArrayList<Member> competitiveSwimmers = new ArrayList<>();
+    private ArrayList<Member> exercises = new ArrayList<>();
+    private ArrayList<Member> seniors = new ArrayList<>();
+    private ArrayList<Member> juniors = new ArrayList<>();
+    private ArrayList<Member> pensioner = new ArrayList<>();
 
     private Userinterface userinterface;
     private Cashier cashier;
@@ -90,14 +90,14 @@ public class ChairmanController {
         userinterface.askFindMemberToAdjust();
         String input = userinterface.returnsUserInputString();
 
-        for (Members member : allMembers) {
+        for (Member member : allMembers) {
             if (input.equals(member.getName())) {
                 adjustMemberInfo(member);
             }
         }
     }
 
-    public void adjustMemberInfo(Members member) {
+    public void adjustMemberInfo(Member member) {
         userinterface.printMember(member);
         userinterface.askWhatInfoToAdjust();
         int input = userinterface.returnsUserInputInt();
@@ -198,7 +198,7 @@ public class ChairmanController {
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
-        Members member = new Members(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
+        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
 
         addMemberToMemberList(member);
         addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
@@ -206,17 +206,17 @@ public class ChairmanController {
         userinterface.newMemberSuccesful(member.getName());
     }
 
-    public void addMemberToArraylists(Members member, boolean isActive, boolean isCompetitiveSwimmer){
+    public void addMemberToArraylists(Member member, boolean isActive, boolean isCompetitiveSwimmer){
         addJuniorOrSenior(member.getAge(), member);
         addActiveOrPassive(isActive, member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
     }
 
-    public void addMemberToMemberList(Members member) {
+    public void addMemberToMemberList(Member member) {
         allMembers.add(member);
     }
 
-    public void addJuniorOrSenior(int age, Members member) {
+    public void addJuniorOrSenior(int age, Member member) {
         if (age < 18)
             juniors.add(member);
         else if (age >= 18 && age <= 60) //this works as intented even though it says always true, this is simply just to make the code more readable
@@ -227,14 +227,14 @@ public class ChairmanController {
         }
     }
 
-    public void addActiveOrPassive(boolean isActive, Members member) {
+    public void addActiveOrPassive(boolean isActive, Member member) {
         if (isActive)
             activeMembers.add(member);
         else
             passiveMembers.add(member);
     }
 
-    public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Members member) {
+    public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Member member) {
         if (isCompetitiveSwimmer)
             competitiveSwimmers.add(member);
         else
@@ -253,14 +253,14 @@ public class ChairmanController {
 
     }
 
-    public void removeMemberFromMemberList(Members member) {
+    public void removeMemberFromMemberList(Member member) {
         allMembers.remove(member);
     }
 
     public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.csv");
 
-        for (Members member : allMembers) {
+        for (Member member : allMembers) {
             out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
                     member.isActive() + ";" + member.isCompetitiveSwimmer());
         }
@@ -281,31 +281,31 @@ public class ChairmanController {
             boolean isActive = lineScanner.nextBoolean();
             boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
 
-            Members member = new Members(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
+            Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
             allMembers.add(member);
             addMemberToArraylists(member,isActive,isCompetitiveSwimmer);
         }
     }
 
-    public ArrayList<Members> getAllMembers() {
+    public ArrayList<Member> getAllMembers() {
         return allMembers;
     }
 
-    public ArrayList<Members> getJuniors() {
+    public ArrayList<Member> getJuniors() {
         return juniors;
 
     }
 
-    public ArrayList<Members> getSeniors() {
+    public ArrayList<Member> getSeniors() {
         return seniors;
     }
 
-    public ArrayList<Members> getPassiveMembers() {
+    public ArrayList<Member> getPassiveMembers() {
         return passiveMembers;
     }
 
-    public ArrayList<Members> getPensioner() {
+    public ArrayList<Member> getPensioner() {
         return pensioner;
     }
 

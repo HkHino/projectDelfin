@@ -109,7 +109,7 @@ public class Userinterface {
         System.out.println("Cancel Subscription");
     }
 
-    public void viewListOfMembers(ArrayList<Members> members) {
+    public void viewListOfMembers(ArrayList<Member> members) {
         System.out.println("List of all members");
         String gender;
         String activity;
@@ -137,7 +137,7 @@ public class Userinterface {
         System.out.println();
     }
 
-    public void printMember(Members member){
+    public void printMember(Member member){
         System.out.println("\n"+member.getName() + ", Age:" + member.getAge() + ", Address: "+member.getAddress()+", Is active member: " +
                 member.isActive() + ", Is Competitive Swimmer: " + member.isCompetitiveSwimmer()+", Female: " + member.isGenderIsFemale());
 
