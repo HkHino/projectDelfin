@@ -31,7 +31,6 @@ public class Cashier {
 
     public void cashierMenu() {
         boolean loop = true;
-        userinterface.loggedInAsCashier();
 
         while (loop) {
             userinterface.cashierMenu();
@@ -88,6 +87,7 @@ public class Cashier {
         paymentchecker();
         String paymentstatus;
 
+        userinterface.paymentStatus();
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
             if (chairmanController.getAllMembers().get(i).isHasPaid() == true)
             {
@@ -115,9 +115,9 @@ public class Cashier {
         double incomeMembersPensionists = amountOfMembersPensionists * pricePensionist;
 
         double totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
+        userinterface.totalIncome();
         System.out.println(totalIncome + "kr");
     }
-
 
     public void paymentchecker() {
         Random rand = new Random();

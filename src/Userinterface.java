@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//todo give ui a overhaul to corrent numbers in menus and other minor inconsistencies
 public class Userinterface {
 
     Scanner scanner = new Scanner(System.in);
@@ -35,7 +34,9 @@ public class Userinterface {
 
     public void trainerMenu() {
         System.out.println("""
+                
                 You are logged in as Trainer
+                
                 What would you like to do?
                                
                 3) Return to previous menu
@@ -46,7 +47,8 @@ public class Userinterface {
     }
 
     public void chairmanMenu() {
-        System.out.println("""                                
+        System.out.println("""  
+                                              
                 Logged in as Chairman
                              
                  1) Sign up new member
@@ -68,7 +70,9 @@ public class Userinterface {
 
     public void cashierMenu() {
         System.out.println("""    
-
+                
+                Logged in as Cashier
+                
                 1) View expected income
                 2) View expected expenses
                 3) View payments pending/outstanding
@@ -76,10 +80,6 @@ public class Userinterface {
                 5) Return to previous menu
                 """);
     }
-    public void loggedInAsCashier(){
-        System.out.println("Logged in as Cashier");
-    }
-
 
     public void askName() {
         System.out.print("Name: ");
@@ -97,7 +97,7 @@ public class Userinterface {
         System.out.print("Gender (F/M): ");
     }
 
-    public void askMemberacctivity() {
+    public void askMemberactivity() {
         System.out.print("Member activity (A/P): ");
     }
 
@@ -107,6 +107,18 @@ public class Userinterface {
 
     public void cancelSub() {
         System.out.println("Cancel Subscription");
+    }
+
+    public void currentMembersNames() {
+        System.out.println("\nCurrent members:");
+
+    }
+
+    public void totalIncome() {
+        System.out.println("Expected annual income");
+    }
+    public void paymentStatus() {
+        System.out.println("Payment status");
     }
 
     public void viewListOfMembers(ArrayList<Member> members) {
@@ -134,7 +146,6 @@ public class Userinterface {
             System.out.println(members.get(i).getName() + ", "+ members.get(i).getAge() + ", "+
                     activity + ", " + memberStatus+", "+gender+", "+ members.get(i).getAddress());
         }
-        System.out.println();
     }
 
     public void printMember(Member member){
@@ -164,7 +175,6 @@ public class Userinterface {
 
     public void askFindMemberToAdjust() {
         System.out.print("Enter member name: ");
-
     }
 
     public void askWhatInfoToAdjust() {
@@ -180,7 +190,7 @@ public class Userinterface {
                 """);
     }
 
-    public void newMemberSuccesful(String name) {
+    public void newMemberSuccessful(String name) {
         System.out.println("You have successfully added a new member!: " + name);
     }
 }
