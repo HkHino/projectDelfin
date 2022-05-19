@@ -27,7 +27,7 @@ public class TrainerController
                     break;
                 }
                 case 5: {
-
+                    //this is an empty loop
                     loop = false;
                     break;
                 }
@@ -41,14 +41,5 @@ public class TrainerController
     }
 
     }
-/*
-    public TrainerController(Userinterface userinterface){
-        this.userinterface = userinterface;
-    }
 
-
-    public TrainerController()
-    {}
-
- */
 }
