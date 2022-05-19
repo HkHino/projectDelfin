@@ -148,53 +148,78 @@ public class ChairmanController {
         userinterface.askAddress();
         String inputAddress = userinterface.returnsUserInputString();
 
+        //input der er fejlhåndteret har sin egen metode
+        String inputDateOfBirth =dateOfBirth();
+        boolean genderIsFemale = genderIsFemale();
+        boolean isActive = isActive();
+        boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
+
+
+        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+    }
+
+    public String dateOfBirth() {
         String inputDateOfBirth = "";
         while (inputDateOfBirth.length() != 10) {
             userinterface.askDateOfBirth();
             inputDateOfBirth = userinterface.returnsUserInputString();
         }
+        return inputDateOfBirth;
+    }
 
-
+    public boolean genderIsFemale() {
         boolean askGenderLoop = true;
-        boolean genderIsFemale = true;
         while (askGenderLoop) {
             userinterface.askGender();
-            String inputGenderIsFemale = userinterface.returnsUserInputString();
+            String inputGenderIsFemale = userinterface.returnsUserInputString().toLowerCase();
 
             switch (inputGenderIsFemale) {
                 case "f": {
-                    genderIsFemale = true;
-                    askGenderLoop=false;
-                    break;
+                    return true;
                 }
                 case "m": {
-                    genderIsFemale = false;
-                    askGenderLoop=false;
-                    break;
+                    return false;
                 }
             }
         }
+        return false;
+    }
 
-            //TODO VIDERE MED FEJLHÅNDTERING
-            userinterface.askMemberactivity();
-            String inputActivity = userinterface.returnsUserInputString();
-            boolean isActive;
-            if (inputActivity.equalsIgnoreCase("a"))
-                isActive = true;
-            else
-                isActive = false;
+    public boolean isActive() {
+        boolean askActivityLoop = true;
+        while (askActivityLoop) {
+            userinterface.askMemberacctivity();
+            String inputActivity = userinterface.returnsUserInputString().toLowerCase();
 
-            userinterface.askIsCompetitive();
-            String inputEliteSwimmer = userinterface.returnsUserInputString();
-            boolean isCompetitiveSwimmer;
-            if (inputEliteSwimmer.equalsIgnoreCase("yes"))
-                isCompetitiveSwimmer = true;
-            else
-                isCompetitiveSwimmer = false;
-
-            createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
-
+            switch (inputActivity) {
+                case "a": {
+                    return true;
+                }
+                case "p": {
+                    return false;
+                }
+            }
         }
+        return false;
+    }
+
+    public boolean isCompetitiveSwimmer() {
+        boolean askIsCompetitiveLoop = true;
+        while (askIsCompetitiveLoop) {
+            userinterface.askIsCompetitive();
+            String inputEliteSwimmer = userinterface.returnsUserInputString().toLowerCase();
+
+            switch (inputEliteSwimmer) {
+                case "yes", "y": {
+                    return true;
+                }
+                case "no", "n": {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
@@ -206,7 +231,7 @@ public class ChairmanController {
         userinterface.newMemberSuccessful(member.getName());
     }
 
-    public void addMemberToArraylists(Member member, boolean isActive, boolean isCompetitiveSwimmer){
+    public void addMemberToArraylists(Member member, boolean isActive, boolean isCompetitiveSwimmer) {
         addJuniorOrSenior(member.getAge(), member);
         addActiveOrPassive(isActive, member);
         addCompetitiveOrExerciser(isCompetitiveSwimmer, member);
@@ -279,18 +304,19 @@ public class ChairmanController {
             String line = sc.nextLine();
             //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
+            if (lineScanner.hasNext()) {
+                String name = lineScanner.next();
+                String dateOfBirth = lineScanner.next();
+                String address = lineScanner.next();
+                boolean isGenderIsFemale = lineScanner.nextBoolean();
+                boolean isActive = lineScanner.nextBoolean();
+                boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
 
-            String name = lineScanner.next();
-            String dateOfBirth = lineScanner.next();
-            String address = lineScanner.next();
-            boolean isGenderIsFemale = lineScanner.nextBoolean();
-            boolean isActive = lineScanner.nextBoolean();
-            boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
+                Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
 
-            Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
-
-            allMembers.add(member);
-            addMemberToArraylists(member,isActive,isCompetitiveSwimmer);
+                allMembers.add(member);
+                addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
+            }
         }
     }
 

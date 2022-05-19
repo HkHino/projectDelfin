@@ -65,6 +65,7 @@ public class Userinterface {
                 2) Change member data/status
                 3) Top 5 competitive swimmers
                 4) Return to previous menu
+                
                 """);
     }
 
