@@ -188,7 +188,7 @@ public class ChairmanController {
     public boolean isActive() {
         boolean askActivityLoop = true;
         while (askActivityLoop) {
-            userinterface.askMemberacctivity();
+            userinterface.askMemberactivity();
             String inputActivity = userinterface.returnsUserInputString().toLowerCase();
 
             switch (inputActivity) {

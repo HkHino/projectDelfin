@@ -23,7 +23,7 @@ public class Userinterface {
 
     public void StartMenu() {
         System.out.print("""
-                
+                                
                 Log in:
                 1) Chairman
                 2) Trainer
@@ -34,9 +34,9 @@ public class Userinterface {
 
     public void trainerMenu() {
         System.out.println("""
-                
+                                
                 You are logged in as Trainer
-                
+                                
                 What would you like to do?
                                
                 3) Return to previous menu
@@ -65,15 +65,15 @@ public class Userinterface {
                 2) Change member data/status
                 3) Top 5 competitive swimmers
                 4) Return to previous menu
-                
+                                
                 """);
     }
 
     public void cashierMenu() {
         System.out.println("""    
-                
+                                
                 Logged in as Cashier
-                
+                                
                 1) View expected income
                 2) View expected expenses
                 3) View payments pending/outstanding
@@ -118,6 +118,7 @@ public class Userinterface {
     public void totalIncome() {
         System.out.println("Expected annual income");
     }
+
     public void paymentStatus() {
         System.out.println("Payment status");
     }
@@ -129,49 +130,47 @@ public class Userinterface {
         String memberStatus;
         for (int i = 0; i < members.size(); i++) {
 
-            if(members.get(i).isGenderIsFemale())
+            if (members.get(i).isGenderIsFemale())
                 gender = "Female";
             else
                 gender = "Male";
 
-            if(members.get(i).isActive())
+            if (members.get(i).isActive())
                 activity = "Active";
             else
                 activity = "Passive";
 
-            if(members.get(i).isCompetitiveSwimmer())
+            if (members.get(i).isCompetitiveSwimmer())
                 memberStatus = "Competitive Swimmer";
             else
                 memberStatus = "Exerciser";
 
-            System.out.println(members.get(i).getName() + ", "+ members.get(i).getAge() + ", "+
-                    activity + ", " + memberStatus+", "+gender+", "+ members.get(i).getAddress());
+            System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
+                    activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress());
         }
     }
 
-    public void printMember(Member member){
+    public void printMember(Member member) {
         String gender;
         String activity;
         String memberStatus;
-        if(member.isGenderIsFemale() == true)
-        {
+        if (member.isGenderIsFemale() == true) {
             gender = "Female";
-        }
-        else
+        } else
             gender = "Male";
 
-        if(member.isActive() == true)
+        if (member.isActive() == true)
             activity = "Is active";
         else
             activity = "Is passive";
 
-        if(member.isCompetitiveSwimmer() == true)
+        if (member.isCompetitiveSwimmer() == true)
             memberStatus = "Is competitive Swimmer";
         else
             memberStatus = "Is exerciser";
 
         System.out.println(member.getName() + ", " + member.getAge() + ", " +
-                activity + ", " + memberStatus +", "+ gender +", "+ member.getAddress());
+                activity + ", " + memberStatus + ", " + gender + ", " + member.getAddress());
     }
 
     public void askFindMemberToAdjust() {
@@ -180,7 +179,7 @@ public class Userinterface {
 
     public void askWhatInfoToAdjust() {
         System.out.println("""
-                
+                                
                 Adjust information
                 1) Name
                 2) Date of birth
