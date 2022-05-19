@@ -44,8 +44,23 @@ public class Member {
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
 
         calculateAge();
-
     }
+
+    public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int numberGen)
+    {
+        this.name = name;
+
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.genderIsFemale = genderIsFemale;
+        this.isActive = isActive;
+        this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+        this.memberId = numberGen;
+
+        calculateAge();
+    }
+
+
 
     public int getAge()
     {

@@ -141,7 +141,7 @@ public class ChairmanController {
     }
 
     public void signUpNewMember() {
-        userinterface.askMemberId()
+
 
         userinterface.askName();
         String inputName = userinterface.returnsUserInputString();
@@ -156,7 +156,8 @@ public class ChairmanController {
         boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
 
 
-        createNewMember(inputName, memberId, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+
     }
 
     public String dateOfBirth() {
@@ -223,9 +224,11 @@ public class ChairmanController {
     }
 
 
-    public void createNewMember(String name, int memberId, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
-        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer);
+    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) {
+        int numberGen = 5; //todo værdi skal indlæses fra en nummerfil.
 
+        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, numberGen);
+                numberGen ++;
         addMemberToMemberList(member);
         addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
