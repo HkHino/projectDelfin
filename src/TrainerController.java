@@ -2,7 +2,7 @@ public class TrainerController
 {
 
     private Userinterface userinterface;
-    private boolean loop = true;
+
 
     public TrainerController(Userinterface userinterface)
     {
@@ -10,36 +10,61 @@ public class TrainerController
     }
 
     public void trainerMenu(){
-        userinterface.trainerMenu();
-        int input = userinterface.returnsUserInputInt();
+        boolean loop = true;
+
         while (loop){
             userinterface.trainerMenu();
+            int input = userinterface.returnsUserInputInt();
+
 
             switch (input){
                 case 1: {
-                    showJuniorSwimmers();
+                    trainerSwimmersMenu();
                     break;
                 }
                 case 2: {
-                    showSeniorSwimmers();
-                    break;
-                }
-                case 3: {
                     topSwimmers();
                     break;
                 }
-                case 4: {
+                case 3: {
                     addSwimmingTimes();
+                    break;
+                }
+                case 4: {
                     loop=false;
                     break;
                 }
-                case 5: {
-                    loop = false;
-                    break;
-                }
+
             }
         }
     }
+
+    public void trainerSwimmersMenu() {
+
+        userinterface.trainerSwimmers();
+        int input = userinterface.returnsUserInputInt();
+
+        switch (input) {
+            case 1: {
+                showJuniorSwimmers();
+                break;
+            }
+            case 2: {
+                showSeniorSwimmers();
+                break;
+            }
+            case 3: {
+                showPensionerSwimmers();
+                break;
+            }
+            case 4: {
+
+                break;
+            }
+        }
+    }
+
+
     public void addSwimmingTimes(){
         //int memberID = userinterface.memberId(); //todo fix this at some point
     }
@@ -49,6 +74,10 @@ public class TrainerController
     }
 
     public void showSeniorSwimmers(){ //TODO show senior swimmers
+
+    }
+
+    public void showPensionerSwimmers(){ //TODO show Pensioner swimmers
 
     }
 
