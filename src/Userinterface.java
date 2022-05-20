@@ -39,11 +39,19 @@ public class Userinterface {
                                 
                 What would you like to do?
                                
+                1) View swimmers
+                2) View top 5
+                3) Add time to competitive swimmer
+                4) Return to previous menu
+                """);
+    }
+
+    public void trainerSwimmers() {
+        System.out.println("""
                 1) View junior swimmers
                 2) View senior swimmers
-                3) View top 5
-                4) Add time to competitive swimmer
-                5) Return to previous menu
+                3) View Pensioner swimmers
+                4) Return to previous menu
                 """);
     }
 
