@@ -10,7 +10,7 @@ public class ChairmanController {
     private ArrayList<Member> allMembers = new ArrayList<>();
     private ArrayList<Member> activeMembers = new ArrayList<>();
     private ArrayList<Member> passiveMembers = new ArrayList<>();
-    private ArrayList<Member> competitiveSwimmers = new ArrayList<>();
+    private ArrayList<CompetitiveMember> competitiveSwimmers = new ArrayList<>();
     private ArrayList<Member> exercises = new ArrayList<>();
     private ArrayList<Member> seniors = new ArrayList<>();
     private ArrayList<Member> juniors = new ArrayList<>();
@@ -47,20 +47,15 @@ public class ChairmanController {
                     adjustMembersMenu();
                     break;
                 }
-
                 case 4: {
                     cashier.cashierMenu();
                     break;
                 }
-
                 case 5: {
                     loop = false;
                     break;
                 }
             }
-
-            saveListOfMembers();
-
         }
 
     }
@@ -71,6 +66,7 @@ public class ChairmanController {
 
         switch (input) {
             case 1: {
+                userinterface.listOfAllMembers();
                 userinterface.viewListOfMembers(allMembers);
                 break;
             }
@@ -151,7 +147,7 @@ public class ChairmanController {
         String inputAddress = userinterface.returnsUserInputString();
 
         //input der er fejlhåndteret har sin egen metode
-        String inputDateOfBirth =dateOfBirth();
+        String inputDateOfBirth = dateOfBirth();
         boolean genderIsFemale = genderIsFemale();
         boolean isActive = isActive();
         boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
@@ -226,15 +222,27 @@ public class ChairmanController {
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) throws FileNotFoundException {
-        memberNumberGen = loadLastIDnumber(); //todo værdi skal indlæses fra en nummerfil.
+        memberNumberGen = loadLastIDnumber();
         System.out.println(memberNumberGen);
-        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
-        memberNumberGen ++;
-        saveLastIDnumber(memberNumberGen); //saver til fil
-        addMemberToMemberList(member);
-        addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
-        userinterface.newMemberSuccessful(member.getName());
+        if (isCompetitiveSwimmer) {
+            CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
+            memberNumberGen++;
+            saveLastIDnumber(memberNumberGen); //saver til fil
+            addMemberToMemberList(competitiveMember); //All Members
+            addMemberToArraylists(competitiveMember, isActive, isCompetitiveSwimmer); //Andre member arrays
+
+            userinterface.newMemberSuccessful(competitiveMember.getName()); //printer ny member
+        } else {
+
+            Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
+            memberNumberGen++;
+            saveLastIDnumber(memberNumberGen); //saver til fil
+            addMemberToMemberList(member);
+            addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
+
+            userinterface.newMemberSuccessful(member.getName());
+        }
     }
 
     public void addMemberToArraylists(Member member, boolean isActive, boolean isCompetitiveSwimmer) {
@@ -266,8 +274,8 @@ public class ChairmanController {
     }
 
     public void addCompetitiveOrExerciser(boolean isCompetitiveSwimmer, Member member) {
-        if (isCompetitiveSwimmer)
-            competitiveSwimmers.add(member);
+        if (member instanceof CompetitiveMember)
+            competitiveSwimmers.add((CompetitiveMember) member);
         else
             exercises.add(member);
     }
@@ -276,10 +284,8 @@ public class ChairmanController {
 
         userinterface.cancelSub();
         userinterface.currentMembersNames();
-        for (int i = 0; i < allMembers.size(); i++) {
-            userinterface.printMemberNamesAndID(allMembers,i);
+        userinterface.printMemberNamesAndID(allMembers);
 
-        }
         System.out.println();
         userinterface.askMemberIDorName();
         String nameOrID = userinterface.returnsUserInputString();
@@ -287,15 +293,14 @@ public class ChairmanController {
         findMemberIDorName(nameOrID);
     }
 
-    public void findMemberIDorName(String nameOrID){
-        try{
-            int memberId =(Integer.parseInt(nameOrID));
-            for (int i = 0; i < allMembers.size() ; i++) {
+    public void findMemberIDorName(String nameOrID) {
+        try {
+            int memberId = (Integer.parseInt(nameOrID));
+            for (int i = 0; i < allMembers.size(); i++) {
                 if (memberId == allMembers.get(i).getMemberId())
                     removeMemberFromMemberList(allMembers.get(i));
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             for (int i = 0; i < allMembers.size(); i++) {
                 if (nameOrID.equals(allMembers.get(i).getName()))
                     removeMemberFromMemberList(allMembers.get(i));
@@ -308,13 +313,17 @@ public class ChairmanController {
         allMembers.remove(member);
     }
 
-
     public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.csv");
 
         for (Member member : allMembers) {
-            out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                    member.isActive() + ";" + member.isCompetitiveSwimmer()+ ";" + member.getMemberId());
+            if (member instanceof CompetitiveMember) {
+                out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDisciplin());
+            } else {
+                out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId());
+            }
         }
     }
 
@@ -334,13 +343,40 @@ public class ChairmanController {
                 boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
                 int memberId = lineScanner.nextInt();
 
-                Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
 
-                allMembers.add(member);
-                addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
+                if (isCompetitiveSwimmer) {
+                    CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
+
+                    if (lineScanner.hasNext()) {
+                        SwimmingDisciplines swimmingDiscipline = null;
+                        switch (lineScanner.next()) {
+                            case "BUTTERFLY":
+                                swimmingDiscipline = SwimmingDisciplines.BUTTERFLY;
+                                break;
+                            case "CRAWL":
+                                swimmingDiscipline = SwimmingDisciplines.CRAWL;
+                                break;
+                            case "BACKCRAWL":
+                                swimmingDiscipline = SwimmingDisciplines.BACKCRAWL;
+                                break;
+                            case "BREASTSTROKE":
+                                swimmingDiscipline = SwimmingDisciplines.BREASTSTROKE;
+                                break;
+                        }
+                        competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
+                    }
+
+                    allMembers.add(competitiveMember);
+                    addMemberToArraylists(competitiveMember, isActive, isCompetitiveSwimmer);
+                } else {
+                    Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
+                    allMembers.add(member);
+                    addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
+                }
             }
         }
     }
+
     public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
         PrintStream out = new PrintStream("memberID.txt");
         out.print(MemberNumberGen);
@@ -350,7 +386,7 @@ public class ChairmanController {
         Scanner sc = new Scanner(new File("memberID.txt"));
         while (sc.hasNextLine()) {
             lastIDnumber = sc.nextInt();
-           }
+        }
         return lastIDnumber;
     }
 
@@ -375,7 +411,8 @@ public class ChairmanController {
         return pensioner;
     }
 
-
-
+    public ArrayList<CompetitiveMember> getCompetitiveSwimmers() {
+        return competitiveSwimmers;
+    }
 }
 

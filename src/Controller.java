@@ -14,8 +14,10 @@ public class Controller
         userinterface = new Userinterface();
         cashier = new Cashier(userinterface);
         chairmanController = new ChairmanController(userinterface, cashier);
+
         cashier.setChairmanController(chairmanController);
         trainerController = new TrainerController(userinterface);
+        trainerController.setChairmanController(chairmanController);
         trainer = new Trainer("Bob", 1);
 
 
@@ -54,5 +56,6 @@ public class Controller
             }
 
         }
+        chairmanController.saveListOfMembers();
     }
 }

@@ -68,6 +68,7 @@ public class Userinterface {
 
     public void trainerDisciplins() {
         System.out.println("""
+                
                 1) Butterfly
                 2) Crawl
                 3) Back crawl
@@ -153,8 +154,13 @@ public class Userinterface {
         System.out.println("Payment status");
     }
 
-    public void viewListOfMembers(ArrayList<Member> members) {
+    public void listOfAllMembers(){
         System.out.println("List of all members");
+    }
+
+
+    public void viewListOfMembers(ArrayList<Member> members) {
+
         String gender;
         String activity;
         String memberStatus;
@@ -177,6 +183,36 @@ public class Userinterface {
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
                     activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: "+ members.get(i).getMemberId());
+        }
+    }
+
+    public void listOfCompetitiveMembers(){
+        System.out.println("List of competitive members");
+    }
+    public void viewListOfCompetitiveMembers(ArrayList<CompetitiveMember> members) {
+
+        String gender;
+        String activity;
+        String swimmingDisciplines="";
+        for (int i = 0; i < members.size(); i++) {
+
+            if (members.get(i).isGenderIsFemale())
+                gender = "Female";
+            else
+                gender = "Male";
+
+            if (members.get(i).isActive())
+                activity = "Active";
+            else
+                activity = "Passive";
+
+            if (members.get(i).getSwimmingDisciplin()!=null)
+               swimmingDisciplines = ", Discipline: " + members.get(i).getSwimmingDisciplin();
+
+
+            System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
+                    activity + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: "+ members.get(i).getMemberId()
+                    + swimmingDisciplines);
         }
     }
 
@@ -235,10 +271,17 @@ public class Userinterface {
                 " kr. Payment status: " + paymentstatus);
     }
 
-    public void printMemberNamesAndID(ArrayList<Member> members, int i) {
-        System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId());
+    public void printMemberNamesAndID(ArrayList<Member> members) {
+        for (int i = 0; i < members.size(); i++) {
+            System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId());
+        }
     }
 
+    public void printCompetitiveMemberNamesAndID(ArrayList<CompetitiveMember> members) {
+        for (int i = 0; i < members.size(); i++) {
+            System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId());
+        }
+    }
     public void printMemberId(){
         System.out.println("this is your member ID");
     }
@@ -246,4 +289,17 @@ public class Userinterface {
     public void askMemberIDorName(){
         System.out.print("Type name or member ID: ");
     }
-}
+
+    public void memberNotFound() {
+        System.out.println("Member not found");
+    }
+
+    public void askWhichAgeGroup() {
+        System.out.println("""
+                1) Junior swimmers
+                2) Senior swimmers
+                3) Pensioner swimmers
+                4) Return to previous menu
+                """);
+    }
+    }
