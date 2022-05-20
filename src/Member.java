@@ -33,7 +33,7 @@ public class Member {
     }
 
     //constructor
-    public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
+   /* public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
     {
         this.name = name;
 
@@ -45,6 +45,8 @@ public class Member {
 
         calculateAge();
     }
+
+    */
 
     public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int numberGen)
     {
@@ -59,8 +61,6 @@ public class Member {
 
         calculateAge();
     }
-
-
 
     public int getAge()
     {

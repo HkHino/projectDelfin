@@ -8,7 +8,7 @@ public class Cashier {
     private int priceJunior = 1000;
     private int priceSenior = 1600;
 
-    private int pensionistAge = 65;
+    private int pensionerAge = 60;
     private double pensionerDiscount = 0.75;
     private double pricePensionist = 1600 * pensionerDiscount;
     private int pricePassiveMember = 500;
@@ -138,7 +138,5 @@ public class Cashier {
 
         }
     }
-
-
 }
 

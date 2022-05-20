@@ -147,7 +147,7 @@ public class Userinterface {
                 memberStatus = "Exerciser";
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
-                    activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress());
+                    activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: "+ members.get(i).getMemberId());
         }
     }
 
@@ -206,11 +206,15 @@ public class Userinterface {
                 " kr. Payment status: " + paymentstatus);
     }
 
-    public void printMemberNames(ArrayList<Member> members, int i) {
-        System.out.println(members.get(i).getName());
+    public void printMemberNamesAndID(ArrayList<Member> members, int i) {
+        System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId());
     }
 
-    public void memberId(){
+    public void printMemberId(){
         System.out.println("this is your member ID");
+    }
+
+    public void askMemberIDorName(){
+        System.out.print("Type name or member ID: ");
     }
 }
