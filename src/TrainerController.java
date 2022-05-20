@@ -19,11 +19,11 @@ public class TrainerController
 
             switch (input){
                 case 1: {
-                    trainerSwimmersMenu();
+                    SwimmersMenu();
                     break;
                 }
                 case 2: {
-                    topSwimmers();
+                    top5Menu();
                     break;
                 }
                 case 3: {
@@ -31,6 +31,10 @@ public class TrainerController
                     break;
                 }
                 case 4: {
+                    addDisciplinToSwimmer();
+                    break;
+                }
+                case 5: {
                     loop=false;
                     break;
                 }
@@ -39,50 +43,173 @@ public class TrainerController
         }
     }
 
-    public void trainerSwimmersMenu() {
+    public void SwimmersMenu() {
 
         userinterface.trainerSwimmers();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
+            case 1: { //TODO show all junior swimmers
+                break;
+            }
+            case 2: { //TODO show all senior swimmers
+                break;
+            }
+            case 3: { //TODO show all pensioner swimmers
+                break;
+            }
+            case 4: { //return
+                break;
+            }
+        }
+    }
+
+    public void top5Menu() {
+
+        userinterface.trainerTop5Menu();
+        int input = userinterface.returnsUserInputInt();
+
+        switch (input) {
             case 1: {
-                showJuniorSwimmers();
+                JuniorTopSwimmers();
                 break;
             }
             case 2: {
-                showSeniorSwimmers();
+                SeniorTopSwimmers();
                 break;
             }
             case 3: {
-                showPensionerSwimmers();
+                PensionerTopSwimmers();
                 break;
             }
             case 4: {
-
+                topSwimmers();
+                break;
+            }
+            case 5: {
                 break;
             }
         }
     }
 
 
+
     public void addSwimmingTimes(){
         //int memberID = userinterface.memberId(); //todo fix this at some point
     }
 
-    public void showJuniorSwimmers(){ //TODO show junior swimmers
+    public void addDisciplinToSwimmer() { //TODO add disciplin to swimmer
 
     }
 
-    public void showSeniorSwimmers(){ //TODO show senior swimmers
+    public void JuniorTopSwimmers() { //TODO show top 5 junior swimmers
+        userinterface.trainerDisciplins();
+        int input = userinterface.returnsUserInputInt();
 
+        switch (input) {
+            case 1: { //butterfly
+
+                break;
+            }
+            case 2: {  //crawl
+
+                break;
+            }
+            case 3: { //back crawl
+
+                break;
+            }
+            case 4: { //breaststroke
+
+                break;
+            }
+            case 5: { //return
+                break;
+            }
+        }
     }
 
-    public void showPensionerSwimmers(){ //TODO show Pensioner swimmers
+    public void SeniorTopSwimmers(){ //TODO show top 5 senior swimmers
+        userinterface.trainerDisciplins();
+        int input = userinterface.returnsUserInputInt();
 
+        switch (input) {
+            case 1: { //butterfly
+
+                break;
+            }
+            case 2: {  //crawl
+
+                break;
+            }
+            case 3: { //bacl crawl
+
+                break;
+            }
+            case 4: { //breaststroke
+
+                break;
+            }
+            case 5: { //return
+                break;
+            }
+        }
     }
 
-    public void topSwimmers(){ //TODO show top 5 swimmers
+    public void PensionerTopSwimmers(){ //TODO show top 5 Pensioner swimmers
+        userinterface.trainerDisciplins();
+        int input = userinterface.returnsUserInputInt();
 
+        switch (input) {
+            case 1: { //butterfly
+
+                break;
+            }
+            case 2: {  //crawl
+
+                break;
+            }
+            case 3: { //back crawl
+
+                break;
+            }
+            case 4: { //breaststroke
+
+                break;
+            }
+            case 5: { //return
+                break;
+            }
+        }
     }
+
+    public void topSwimmers(){ //TODO show top 5 swimmers overall
+        userinterface.trainerDisciplins();
+        int input = userinterface.returnsUserInputInt();
+
+        switch (input) {
+            case 1: { //butterfly
+
+                break;
+            }
+            case 2: {  //crawl
+
+                break;
+            }
+            case 3: { //back crawl
+
+                break;
+            }
+            case 4: { //breaststroke
+
+                break;
+            }
+            case 5: { //return
+                break;
+            }
+        }
+    }
+
+
   }
 

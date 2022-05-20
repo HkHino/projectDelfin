@@ -42,7 +42,8 @@ public class Userinterface {
                 1) View swimmers
                 2) View top 5
                 3) Add time to competitive swimmer
-                4) Return to previous menu
+                4) Add disciplin to competitive swimmer
+                5) Return to previous menu
                 """);
     }
 
@@ -50,8 +51,28 @@ public class Userinterface {
         System.out.println("""
                 1) View junior swimmers
                 2) View senior swimmers
-                3) View Pensioner swimmers
+                3) View pensioner swimmers
                 4) Return to previous menu
+                """);
+    }
+
+    public void trainerTop5Menu() {
+        System.out.println("""
+                1) View top junior swimmers
+                2) View top senior swimmers
+                3) View top pensioner swimmers
+                4) View all top swimmers
+                5) Return to previous menu
+                """);
+    }
+
+    public void trainerDisciplins() {
+        System.out.println("""
+                1) Butterfly
+                2) Crawl
+                3) Back crawl
+                4) Breaststroke
+                5) Return to previous menu
                 """);
     }
 
