@@ -6,7 +6,9 @@ public class TrainerController
     private Userinterface userinterface;
     private ChairmanController chairmanController;
 
-    private ArrayList<CompetitiveMember> allCompetetiveSwimmers; //liste af members fra CompetitiveMember klassen
+    private ArrayList<CompetitiveMember> allCompetetiveSwimmers; //liste af members af typen CompetitiveMember (klassen)
+
+    //Arraylister mmodtaget fra chairmanController
     private ArrayList<Member> juniorSwimmers;
     private ArrayList<Member> seniorSwimmers;
     private ArrayList<Member> pensionerSwimmers;
@@ -26,7 +28,7 @@ public class TrainerController
     }
     public void trainerMenu(){
         boolean loop = true;
-        divideCompetitorsAge();
+        divideCompetitorsByAge();
 
         while (loop){
             userinterface.trainerMenu();
@@ -35,9 +37,7 @@ public class TrainerController
 
             switch (input){
                 case 1: {
-                    //TODO lav switch case der spørger: alle svømmere, eller specifik svømmedisciplin
-                    userinterface.listOfCompetitiveMembers();
-                    userinterface.viewListOfCompetitiveMembers(allCompetetiveSwimmers);
+                    swimmersMenu();
                     break;
                 }
                 case 2: {
@@ -49,9 +49,7 @@ public class TrainerController
                     break;
                 }
                 case 4: {
-
-                    whichAgeGroup();
-
+                    addOrChangeCompetitorDiscipline();
                     break;
                 }
                 case 5: {
@@ -63,19 +61,22 @@ public class TrainerController
         }
     }
 
-    public void whichAgeGroup(){
+    public void addOrChangeCompetitorDiscipline(){
         userinterface.askWhichAgeGroup();
         int input = userinterface.returnsUserInputInt();
 
         switch (input){
             case 1:
-                findCompetitorsToDisciplines(juniorCompetitors);
+                userinterface.printGroupTitle("Junior");
+                findCompetitorsAndAddToDisciplines(juniorCompetitors);
                 break;
             case 2:
-                findCompetitorsToDisciplines(seniorCompetitors);
+                userinterface.printGroupTitle("Senior");
+                findCompetitorsAndAddToDisciplines(seniorCompetitors);
                 break;
             case 3:
-                findCompetitorsToDisciplines(pensionerCompetitors);
+                userinterface.printGroupTitle("Pensioner");
+                findCompetitorsAndAddToDisciplines(pensionerCompetitors);
                 break;
             case 4:
                 break;
@@ -84,13 +85,13 @@ public class TrainerController
 
     }
 
-    public void divideCompetitorsAge(){
+    public void divideCompetitorsByAge(){
         allCompetetiveSwimmers = chairmanController.getCompetitiveSwimmers();
         juniorSwimmers = chairmanController.getJuniors();
         seniorSwimmers =  chairmanController.getSeniors();
         pensionerSwimmers = chairmanController.getPensioner();
 
-        //deler medlemmer i alder
+        //Kategoriserer medlemmer ved alder
         //JUNIOR
         for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
             for (int j = 0; j < juniorSwimmers.size(); j++) {
@@ -114,8 +115,7 @@ public class TrainerController
         }
     }
 
-    public void findCompetitorsToDisciplines(ArrayList<CompetitiveMember> members){
-        //userinterface.printMemberNamesAndID(members);
+    public void findCompetitorsAndAddToDisciplines(ArrayList<CompetitiveMember> members){
         userinterface.printCompetitiveMemberNamesAndID(members);
 
         boolean loop = true;
@@ -137,7 +137,7 @@ public class TrainerController
                 }
             } catch (Exception e) {
                 for (int i = 0; i < members.size(); i++) {
-                    if (nameOrID.equals(members.get(i).getName())) {
+                    if (nameOrID.equals(members.get(i).getName().toLowerCase())) {
                         addMemberToDisciplin(members.get(i));
                         found = true;
                         loop = false;
@@ -178,24 +178,29 @@ public class TrainerController
 
     }
 
+    public void swimmersMenu() {
 
-
-    public void SwimmersMenu() {
-
-        userinterface.trainerSwimmers();
+        userinterface.competitiveSwimmersMenu();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
-            case 1: { //TODO show all junior swimmers
+            case 1:
+                userinterface.listOfCompetitiveMembers();
+                printMembers(allCompetetiveSwimmers);
+
+            case 2: {
+                printMembers(juniorCompetitors);
                 break;
             }
-            case 2: { //TODO show all senior swimmers
+            case 3: {
+                printMembers(seniorCompetitors);
                 break;
             }
-            case 3: { //TODO show all pensioner swimmers
+            case 4: {
+                printMembers(pensionerCompetitors);
                 break;
             }
-            case 4: { //return
+            case 5: { //return
                 break;
             }
         }
@@ -203,8 +208,6 @@ public class TrainerController
     public void addSwimmingTimes(){
         //int memberID = userinterface.memberId(); //todo fix this at some point
     }
-
-
     public void top5Menu() {
 
         userinterface.trainerTop5Menu();
@@ -344,6 +347,11 @@ public class TrainerController
 
     public void setChairmanController(ChairmanController chairmanController) {
         this.chairmanController=chairmanController;
+    }
+
+    public void printMembers(ArrayList<CompetitiveMember> members){
+        userinterface.viewListOfCompetitiveMembers(members);
+
     }
 }
 

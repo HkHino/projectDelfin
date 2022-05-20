@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Userinterface {
 
+    String BACKGROUND = "\u001b[48;5;195m";
+    String BLUE_DARK= "\u001b[38;5;19m";
+    String BOLD="\u001b[1m";
+
     Scanner scanner = new Scanner(System.in);
 
     //metoder til scanneren
@@ -17,7 +21,7 @@ public class Userinterface {
     }
 
     public String returnsUserInputString() {
-        String userInput = scanner.nextLine();
+        String userInput = scanner.nextLine().toLowerCase();
         return userInput;
     }
 
@@ -36,23 +40,22 @@ public class Userinterface {
         System.out.println("""
                                 
                 You are logged in as Trainer
-                                
-                What would you like to do?
-                               
+         
                 1) View swimmers
                 2) View top 5
                 3) Add time to competitive swimmer
-                4) Add disciplin to competitive swimmer
+                4) Add/change competitive swimmer discipline
                 5) Return to previous menu
                 """);
     }
 
-    public void trainerSwimmers() {
+    public void competitiveSwimmersMenu() {
         System.out.println("""
-                1) View junior swimmers
-                2) View senior swimmers
-                3) View pensioner swimmers
-                4) Return to previous menu
+                1) All competitive swimmers
+                2) Junior swimmers
+                3) Senior swimmers
+                4) Pensioner swimmers
+                5) Return to previous menu
                 """);
     }
 
@@ -193,7 +196,7 @@ public class Userinterface {
 
         String gender;
         String activity;
-        String swimmingDisciplines="";
+        String swimmingDisciplines;
         for (int i = 0; i < members.size(); i++) {
 
             if (members.get(i).isGenderIsFemale())
@@ -208,6 +211,8 @@ public class Userinterface {
 
             if (members.get(i).getSwimmingDisciplin()!=null)
                swimmingDisciplines = ", Discipline: " + members.get(i).getSwimmingDisciplin();
+            else
+                swimmingDisciplines ="";
 
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
@@ -278,8 +283,14 @@ public class Userinterface {
     }
 
     public void printCompetitiveMemberNamesAndID(ArrayList<CompetitiveMember> members) {
+        String discipline;
         for (int i = 0; i < members.size(); i++) {
-            System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId());
+            if(members.get(i).getSwimmingDisciplin()!=null){
+                discipline=", Disccipline:" + members.get(i).getSwimmingDisciplin();
+            }
+            else
+                discipline="";
+            System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId() + discipline);
         }
     }
     public void printMemberId(){
@@ -287,7 +298,7 @@ public class Userinterface {
     }
 
     public void askMemberIDorName(){
-        System.out.print("Type name or member ID: ");
+        System.out.print("\nType name or member ID: ");
     }
 
     public void memberNotFound() {
@@ -302,4 +313,9 @@ public class Userinterface {
                 4) Return to previous menu
                 """);
     }
+
+    public void printGroupTitle(String ageGroup) {
+        System.out.println(ageGroup + " competitors:");
+
     }
+}

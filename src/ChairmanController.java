@@ -88,7 +88,7 @@ public class ChairmanController {
         String input = userinterface.returnsUserInputString();
 
         for (Member member : allMembers) {
-            if (input.equals(member.getName())) {
+            if (input.equals(member.getName().toLowerCase())) {
                 adjustMemberInfo(member);
             }
         }
@@ -302,7 +302,7 @@ public class ChairmanController {
             }
         } catch (Exception e) {
             for (int i = 0; i < allMembers.size(); i++) {
-                if (nameOrID.equals(allMembers.get(i).getName()))
+                if (nameOrID.equals(allMembers.get(i).getName().toLowerCase()))
                     removeMemberFromMemberList(allMembers.get(i));
             }
         }
