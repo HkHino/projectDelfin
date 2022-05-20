@@ -44,7 +44,7 @@ public class ChairmanController {
                     break;
                 }
                 case 3: {
-                    adjustMembers();
+                    adjustMembersMenu();
                     break;
                 }
 
@@ -65,7 +65,7 @@ public class ChairmanController {
 
     }
 
-    public void adjustMembers() {
+    public void adjustMembersMenu() {
         userinterface.adjustMembersMenu();
         int input = userinterface.returnsUserInputInt();
 
@@ -82,7 +82,6 @@ public class ChairmanController {
             case 3:
                 //todo top 5
             case 4:
-
                 break;
         }
 
@@ -278,16 +277,29 @@ public class ChairmanController {
         userinterface.cancelSub();
         userinterface.currentMembersNames();
         for (int i = 0; i < allMembers.size(); i++) {
-            userinterface.printMemberNames(allMembers,i);
+            userinterface.printMemberNamesAndID(allMembers,i);
 
         }
         System.out.println();
-        userinterface.askName();
-        String name = userinterface.returnsUserInputString();
+        userinterface.askMemberIDorName();
+        String nameOrID = userinterface.returnsUserInputString();
 
-        for (int i = 0; i < allMembers.size(); i++) {
-            if (name.equals(allMembers.get(i).getName()))
-                removeMemberFromMemberList(allMembers.get(i));
+        findMemberIDorName(nameOrID);
+    }
+
+    public void findMemberIDorName(String nameOrID){
+        try{
+            int memberId =(Integer.parseInt(nameOrID));
+            for (int i = 0; i < allMembers.size() ; i++) {
+                if (memberId == allMembers.get(i).getMemberId())
+                    removeMemberFromMemberList(allMembers.get(i));
+            }
+        }
+        catch (Exception e){
+            for (int i = 0; i < allMembers.size(); i++) {
+                if (nameOrID.equals(allMembers.get(i).getName()))
+                    removeMemberFromMemberList(allMembers.get(i));
+            }
         }
 
     }
@@ -296,12 +308,13 @@ public class ChairmanController {
         allMembers.remove(member);
     }
 
+
     public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.csv");
 
         for (Member member : allMembers) {
             out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                    member.isActive() + ";" + member.isCompetitiveSwimmer());
+                    member.isActive() + ";" + member.isCompetitiveSwimmer()+ ";" + member.getMemberId());
         }
     }
 
@@ -319,8 +332,9 @@ public class ChairmanController {
                 boolean isGenderIsFemale = lineScanner.nextBoolean();
                 boolean isActive = lineScanner.nextBoolean();
                 boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
+                int memberId = lineScanner.nextInt();
 
-                Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer);
+                Member member = new Member(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
 
                 allMembers.add(member);
                 addMemberToArraylists(member, isActive, isCompetitiveSwimmer);

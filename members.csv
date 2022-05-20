@@ -1,9 +1,7 @@
-Ella;31-12-1992;Gladsaxe;true;true;true
-Micheal;04-06-1987;Glostrup;false;true;true
-Michealdi;03-06-1997;Hårlev;false;false;false
-Basma;03-12-2007;Nørrebro;true;false;false
-Fluttendut;11-01-1000;Mars;true;true;true
-Hino;14-04-1500;Jupiter;false;false;false
-Busbus;30-05-2010;Månen;true;true;true
-ie;12-12-1999;jg;true;true;false
-ue;12-12-1999;aj;true;true;false
+Ella;31-12-1992;Gladsaxe;true;true;true;1
+Micheal;04-06-1987;Glostrup;false;true;true;2
+Michealdi;03-06-1997;Hårlev;false;false;false;3
+Basma;03-12-2007;Nørrebro;true;false;false;4
+Fluttendut;11-01-1000;Mars;true;true;true;5
+Hino;14-04-1500;Jupiter;false;false;false;6
+Busbus;30-05-2010;Månen;true;true;true;7
