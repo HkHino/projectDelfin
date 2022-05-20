@@ -19,6 +19,7 @@ public class ChairmanController {
     private Userinterface userinterface;
     private Cashier cashier;
     private int lastIDnumber;
+    private int memberNumberGen = 0;
 
     //constructor
 
@@ -226,11 +227,11 @@ public class ChairmanController {
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) throws FileNotFoundException {
-        int MemberNumberGen = loadLastIDnumber(); //todo værdi skal indlæses fra en nummerfil.
-        saveLastIDnumber(MemberNumberGen); //saver til fil
-
-        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, MemberNumberGen);
-        MemberNumberGen ++;
+        memberNumberGen = loadLastIDnumber(); //todo værdi skal indlæses fra en nummerfil.
+        System.out.println(memberNumberGen);
+        Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
+        memberNumberGen ++;
+        saveLastIDnumber(memberNumberGen); //saver til fil
         addMemberToMemberList(member);
         addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
@@ -304,20 +305,6 @@ public class ChairmanController {
         }
     }
 
-    public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
-        PrintStream out = new PrintStream("memberID.txt");
-        out.println(MemberNumberGen);
-    }
-
-    public int loadLastIDnumber() throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("members.csv"));
-        while (sc.hasNextLine()) {
-            lastIDnumber = sc.nextInt();
-        }
-        return lastIDnumber;
-    }
-
-
     public void loadListOfMembers() throws FileNotFoundException { //Læser fra en fil
         Scanner sc = new Scanner(new File("members.csv"));
         while (sc.hasNextLine()) {
@@ -339,6 +326,18 @@ public class ChairmanController {
                 addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
             }
         }
+    }
+    public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
+        PrintStream out = new PrintStream("memberID.txt");
+        out.print(MemberNumberGen);
+    }
+
+    public int loadLastIDnumber() throws FileNotFoundException {
+        Scanner sc = new Scanner(new File("memberID.txt"));
+        while (sc.hasNextLine()) {
+            lastIDnumber = sc.nextInt();
+           }
+        return lastIDnumber;
     }
 
     public ArrayList<Member> getAllMembers() {
