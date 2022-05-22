@@ -22,7 +22,6 @@ public class ChairmanController {
     private int memberNumberGen = 0;
 
     //constructor
-
     public ChairmanController(Userinterface userinterface, Cashier cashier) throws FileNotFoundException {
         this.userinterface = userinterface;
         this.cashier = cashier;
