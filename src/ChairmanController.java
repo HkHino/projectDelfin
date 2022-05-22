@@ -151,9 +151,10 @@ public class ChairmanController {
         boolean genderIsFemale = genderIsFemale();
         boolean isActive = isActive();
         boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
+        double time = 0;
 
 
-        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer);
+        createNewMember(inputName, inputDateOfBirth, inputAddress, genderIsFemale, isActive, isCompetitiveSwimmer, time);
 
     }
 
@@ -221,12 +222,21 @@ public class ChairmanController {
     }
 
 
-    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer) throws FileNotFoundException {
+    public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, double time) throws FileNotFoundException {
         memberNumberGen = loadLastIDnumber();
         System.out.println(memberNumberGen);
 
+        if (isCompetitiveSwimmer)
+        {
+            System.out.println("your best swim time is: "+ time);
+        }
+        else
+        {
+            System.out.println("swimming time N/A");
+        }
+
         if (isCompetitiveSwimmer) {
-            CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
+            CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen, time);
             memberNumberGen++;
             saveLastIDnumber(memberNumberGen); //saver til fil
             addMemberToMemberList(competitiveMember); //All Members
@@ -322,7 +332,7 @@ public class ChairmanController {
                         member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDisciplin());
             } else {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId());
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getTime());
             }
         }
     }
@@ -342,10 +352,12 @@ public class ChairmanController {
                 boolean isActive = lineScanner.nextBoolean();
                 boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
                 int memberId = lineScanner.nextInt();
+                double time = 0;
+                //time = lineScanner.nextDouble(); //todo manglende double i filen skal fikses på et tidspunkt. snak evt med basma om hvordan hun gjorde.
 
 
                 if (isCompetitiveSwimmer) {
-                    CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
+                    CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId, time);
 
                     if (lineScanner.hasNext()) {
                         SwimmingDisciplines swimmingDiscipline = null;

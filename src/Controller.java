@@ -8,6 +8,8 @@ public class Controller
     private Cashier cashier;
     private Userinterface userinterface;
     private Trainer trainer;
+    private CompetitiveMember competitiveMember;
+    private Member member;
 
     public Controller() throws FileNotFoundException
     {
@@ -16,7 +18,7 @@ public class Controller
         chairmanController = new ChairmanController(userinterface, cashier);
 
         cashier.setChairmanController(chairmanController);
-        trainerController = new TrainerController(userinterface);
+        trainerController = new TrainerController(userinterface, competitiveMember);
         trainerController.setChairmanController(chairmanController);
         trainer = new Trainer("Bob", 1);
 

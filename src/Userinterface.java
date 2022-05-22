@@ -24,6 +24,15 @@ public class Userinterface {
         String userInput = scanner.nextLine().toLowerCase();
         return userInput;
     }
+    public int returnsUserInputDouble() {
+        while (!scanner.hasNextDouble()) {
+            System.out.print("Error, enter number: ");
+            scanner.next();
+        }
+        double userInput = scanner.nextDouble();
+        scanner.nextLine();
+        return returnsUserInputDouble();
+    }
 
     public void StartMenu() {
         System.out.print("""

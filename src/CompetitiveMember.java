@@ -1,18 +1,16 @@
-public class CompetitiveMember extends Member
-{
-    private int time;
+public class CompetitiveMember extends Member {
+    private double time;
     private Enum SwimmingDisciplin;
 
-    public CompetitiveMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int memberID)
-    {
-        super(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer,memberID);
+    public CompetitiveMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int memberID, double time) {
+        super(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberID);
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 

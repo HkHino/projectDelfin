@@ -5,6 +5,7 @@ public class TrainerController
 
     private Userinterface userinterface;
     private ChairmanController chairmanController;
+    private CompetitiveMember competitiveMember;
 
     private ArrayList<CompetitiveMember> allCompetetiveSwimmers; //liste af members af typen CompetitiveMember (klassen)
 
@@ -21,9 +22,10 @@ public class TrainerController
     private ArrayList<CompetitiveMember> backcrawl = new ArrayList<>();
     private ArrayList<CompetitiveMember> breaststroke = new ArrayList<>();
 
-    public TrainerController(Userinterface userinterface)
+    public TrainerController(Userinterface userinterface, CompetitiveMember competitiveMember)
     {
         this.userinterface = userinterface;
+        this.competitiveMember = competitiveMember;
 
     }
     public void trainerMenu(){
@@ -151,6 +153,8 @@ public class TrainerController
         }
     }
 
+
+
     public void addMemberToDisciplin(CompetitiveMember member){
         userinterface.trainerDisciplins();
         int input = userinterface.returnsUserInputInt();
@@ -205,9 +209,46 @@ public class TrainerController
             }
         }
     }
-    public void addSwimmingTimes(){
-        //int memberID = userinterface.memberId(); //todo fix this at some point
-    }
+    public void addSwimmingTimes(ArrayList<CompetitiveMember> members) {
+
+            userinterface.printCompetitiveMemberNamesAndID(members);
+
+            boolean loop = true;
+            while(loop) {
+                userinterface.askMemberIDorName();
+                String nameOrID = userinterface.returnsUserInputString();
+
+                boolean found = false;
+
+                try {
+                    int memberId = (Integer.parseInt(nameOrID));
+                    for (int i = 0; i < members.size(); i++) {
+                        if (memberId == members.get(i).getMemberId()) {
+                            competitiveMember.setTime(userinterface.returnsUserInputDouble());
+                          //todo add.time to member
+                            found = true;
+                            loop = false;
+
+                        }
+                    }
+                } catch (Exception e) {
+                    for (int i = 0; i < members.size(); i++) {
+                        if (nameOrID.equals(members.get(i).getName().toLowerCase())) {
+                            competitiveMember.setTime(userinterface.returnsUserInputDouble());
+                            //todo add.time to member
+                            found = true;
+                            loop = false;
+                        }
+
+                    }
+                }
+                if (!found) {
+                    userinterface.memberNotFound();
+                }
+            }
+
+        }
+
     public void top5Menu() {
 
         userinterface.trainerTop5Menu();
