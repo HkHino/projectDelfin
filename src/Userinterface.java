@@ -24,14 +24,14 @@ public class Userinterface {
         String userInput = scanner.nextLine().toLowerCase();
         return userInput;
     }
-    public int returnsUserInputDouble() {
+    public double returnsUserInputDouble() {
         while (!scanner.hasNextDouble()) {
             System.out.print("Error, enter number: ");
             scanner.next();
         }
         double userInput = scanner.nextDouble();
         scanner.nextLine();
-        return returnsUserInputDouble();
+        return userInput;
     }
 
     public void StartMenu() {
@@ -52,7 +52,7 @@ public class Userinterface {
          
                 1) View swimmers
                 2) View top 5
-                3) Add time to competitive swimmer
+                3) Add/change time to competitive swimmer
                 4) Add/change competitive swimmer discipline
                 5) Return to previous menu
                 """);
@@ -123,6 +123,14 @@ public class Userinterface {
                 4) View list of members
                 5) Return to previous menu
                 """);
+    }
+
+    public void askSwimmingTime() {
+        System.out.println("Enter swimming time:");
+    }
+
+    public void addTimeConfirm() {
+        System.out.println("Time has been added to registrer");
     }
 
     public void askName() {

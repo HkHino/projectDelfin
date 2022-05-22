@@ -47,7 +47,8 @@ public class TrainerController
                     break;
                 }
                 case 3: {
-                    addSwimmingTimes();
+                    addOrChangeCompetitorTime();
+
                     break;
                 }
                 case 4: {
@@ -79,6 +80,30 @@ public class TrainerController
             case 3:
                 userinterface.printGroupTitle("Pensioner");
                 findCompetitorsAndAddToDisciplines(pensionerCompetitors);
+                break;
+            case 4:
+                break;
+
+        }
+
+    }
+
+    public void addOrChangeCompetitorTime(){
+        userinterface.askWhichAgeGroup();
+        int input = userinterface.returnsUserInputInt();
+
+        switch (input){
+            case 1:
+                userinterface.printGroupTitle("Junior");
+                addOrChangeSwimmingTimes(juniorCompetitors);
+                break;
+            case 2:
+                userinterface.printGroupTitle("Senior");
+                addOrChangeSwimmingTimes(seniorCompetitors);
+                break;
+            case 3:
+                userinterface.printGroupTitle("Pensioner");
+                addOrChangeSwimmingTimes(pensionerCompetitors);
                 break;
             case 4:
                 break;
@@ -209,7 +234,7 @@ public class TrainerController
             }
         }
     }
-    public void addSwimmingTimes(ArrayList<CompetitiveMember> members) {
+    public void addOrChangeSwimmingTimes(ArrayList<CompetitiveMember> members) {
 
             userinterface.printCompetitiveMemberNamesAndID(members);
 
@@ -224,8 +249,9 @@ public class TrainerController
                     int memberId = (Integer.parseInt(nameOrID));
                     for (int i = 0; i < members.size(); i++) {
                         if (memberId == members.get(i).getMemberId()) {
-                            competitiveMember.setTime(userinterface.returnsUserInputDouble());
-                          //todo add.time to member
+                            userinterface.askSwimmingTime();
+                            members.get(i).setTime(userinterface.returnsUserInputDouble());
+                            userinterface.addTimeConfirm();
                             found = true;
                             loop = false;
 
@@ -234,8 +260,9 @@ public class TrainerController
                 } catch (Exception e) {
                     for (int i = 0; i < members.size(); i++) {
                         if (nameOrID.equals(members.get(i).getName().toLowerCase())) {
+                            userinterface.askSwimmingTime();
                             competitiveMember.setTime(userinterface.returnsUserInputDouble());
-                            //todo add.time to member
+                            userinterface.addTimeConfirm();
                             found = true;
                             loop = false;
                         }

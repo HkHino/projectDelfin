@@ -329,10 +329,10 @@ public class ChairmanController {
         for (Member member : allMembers) {
             if (member instanceof CompetitiveMember) {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDisciplin());
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDisciplin() + ";" + ((CompetitiveMember) member).getTime());
             } else {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getTime());
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId()) ;
             }
         }
     }
