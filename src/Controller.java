@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Controller
@@ -24,8 +25,7 @@ public class Controller
 
 
     }
-    public void run() throws FileNotFoundException
-    {
+    public void run() throws FileNotFoundException {
         chairmanController.loadListOfMembers();
         showMainMenu();
     }

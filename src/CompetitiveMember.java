@@ -1,8 +1,8 @@
-public class CompetitiveMember extends Member {
+public class CompetitiveMember extends Member{
     private double time;
     private Enum SwimmingDisciplin;
 
-    public CompetitiveMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int memberID, double time) {
+    public CompetitiveMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int memberID) {
         super(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberID);
     }
 
@@ -21,4 +21,6 @@ public class CompetitiveMember extends Member {
     public Enum getSwimmingDisciplin() {
         return SwimmingDisciplin;
     }
+
+    //TODO lav en compareTo metode. Problemer med at compare doubles:(
 }

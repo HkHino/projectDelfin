@@ -1,7 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ChairmanController {
@@ -235,9 +238,10 @@ public class ChairmanController {
         }
 
         if (isCompetitiveSwimmer) {
-            CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen, time);
+            CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
             memberNumberGen++;
             saveLastIDnumber(memberNumberGen); //saver til fil
+            competitiveMember.setTime(0.0);
             addMemberToMemberList(competitiveMember); //All Members
             addMemberToArraylists(competitiveMember, isActive, isCompetitiveSwimmer); //Andre member arrays
 
@@ -325,6 +329,8 @@ public class ChairmanController {
     public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.csv");
 
+
+
         for (Member member : allMembers) {
             if (member instanceof CompetitiveMember) {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
@@ -351,12 +357,9 @@ public class ChairmanController {
                 boolean isActive = lineScanner.nextBoolean();
                 boolean isCompetitiveSwimmer = lineScanner.nextBoolean();
                 int memberId = lineScanner.nextInt();
-                double time = 0;
-                //time = lineScanner.nextDouble(); //todo manglende double i filen skal fikses på et tidspunkt. snak evt med basma om hvordan hun gjorde.
-
 
                 if (isCompetitiveSwimmer) {
-                    CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId, time);
+                    CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, isGenderIsFemale, isActive, isCompetitiveSwimmer, memberId);
 
                     if (lineScanner.hasNext()) {
                         SwimmingDisciplines swimmingDiscipline = null;
@@ -375,6 +378,13 @@ public class ChairmanController {
                                 break;
                         }
                         competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
+                        System.out.println(swimmingDiscipline);
+
+
+                        double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
+                        System.out.println(time);
+                        competitiveMember.setTime(time);
+
                     }
 
                     allMembers.add(competitiveMember);
