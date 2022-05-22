@@ -329,8 +329,6 @@ public class ChairmanController {
     public void saveListOfMembers() throws FileNotFoundException { //skriver til en fil
         PrintStream out = new PrintStream("members.csv");
 
-
-
         for (Member member : allMembers) {
             if (member instanceof CompetitiveMember) {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
@@ -378,12 +376,10 @@ public class ChairmanController {
                                 break;
                         }
                         competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
-                        System.out.println(swimmingDiscipline);
 
-
-                        double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
-                        System.out.println(time);
-                        competitiveMember.setTime(time);
+                       // double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
+                       // System.out.println(time);
+                       // competitiveMember.setTime(time);
 
                     }
 

@@ -22,6 +22,10 @@ public class TrainerController
     private ArrayList<CompetitiveMember> backcrawl = new ArrayList<>();
     private ArrayList<CompetitiveMember> breaststroke = new ArrayList<>();
 
+    private ArrayList<CompetitiveMember> top5Crawl= new ArrayList<>();
+    //private ArrayList<Double>
+
+
     public TrainerController(Userinterface userinterface, CompetitiveMember competitiveMember)
     {
         this.userinterface = userinterface;
@@ -29,9 +33,10 @@ public class TrainerController
 
     }
     public void trainerMenu(){
-        boolean loop = true;
         divideCompetitorsByAge();
+        addMemberToDisciplinFromFile();
 
+        boolean loop = true;
         while (loop){
             userinterface.trainerMenu();
             int input = userinterface.returnsUserInputInt();
@@ -178,6 +183,20 @@ public class TrainerController
         }
     }
 
+    public void addMemberToDisciplinFromFile(){
+        for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
+            if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.CRAWL)
+                crawl.add(allCompetetiveSwimmers.get(i));
+            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BUTTERFLY)
+                butterfly.add(allCompetetiveSwimmers.get(i));
+            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BACKCRAWL)
+                backcrawl.add(allCompetetiveSwimmers.get(i));
+            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BREASTSTROKE)
+                breaststroke.add(allCompetetiveSwimmers.get(i));
+        }
+
+    }
+
 
 
     public void addMemberToDisciplin(CompetitiveMember member){
@@ -192,6 +211,7 @@ public class TrainerController
             case 2:
                 member.setSwimmingDisciplin(SwimmingDisciplines.CRAWL);
                 crawl.add(member);
+                System.out.println(crawl.get(0).getName());
                 break;
             case 3:
                 member.setSwimmingDisciplin(SwimmingDisciplines.BACKCRAWL);
@@ -252,6 +272,7 @@ public class TrainerController
                             userinterface.askSwimmingTime();
                             members.get(i).setTime(userinterface.returnsUserInputDouble());
                             userinterface.addTimeConfirm();
+
                             found = true;
                             loop = false;
 
@@ -283,19 +304,19 @@ public class TrainerController
 
         switch (input) {
             case 1: {
-                JuniorTopSwimmers();
+                topFiveSwimmers(juniorCompetitors);
                 break;
             }
             case 2: {
-                SeniorTopSwimmers();
+                topFiveSwimmers(seniorCompetitors);
                 break;
             }
             case 3: {
-                PensionerTopSwimmers();
+                topFiveSwimmers(pensionerCompetitors);
                 break;
             }
             case 4: {
-                topSwimmers();
+                topFiveSwimmers(allCompetetiveSwimmers);
                 break;
             }
             case 5: {
@@ -304,25 +325,26 @@ public class TrainerController
         }
     }
 
-    public void JuniorTopSwimmers() { //TODO show top 5 junior swimmers
+    public void topFiveSwimmers(ArrayList<CompetitiveMember> competitiveMembers) {
         userinterface.trainerDisciplins();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
             case 1: { //butterfly
 
+                userinterface.displayTop5(butterfly,competitiveMembers);
                 break;
             }
             case 2: {  //crawl
-
-                break;
+                userinterface.displayTop5(crawl, competitiveMembers);
             }
+                break;
             case 3: { //back crawl
-
+            userinterface.displayTop5(backcrawl,competitiveMembers);
                 break;
             }
             case 4: { //breaststroke
-
+            userinterface.displayTop5(breaststroke,competitiveMembers);
                 break;
             }
             case 5: { //return
@@ -330,88 +352,6 @@ public class TrainerController
             }
         }
     }
-
-    public void SeniorTopSwimmers(){ //TODO show top 5 senior swimmers
-        userinterface.trainerDisciplins();
-        int input = userinterface.returnsUserInputInt();
-
-        switch (input) {
-            case 1: { //butterfly
-
-                break;
-            }
-            case 2: {  //crawl
-
-                break;
-            }
-            case 3: { //bacl crawl
-
-                break;
-            }
-            case 4: { //breaststroke
-
-                break;
-            }
-            case 5: { //return
-                break;
-            }
-        }
-    }
-
-    public void PensionerTopSwimmers(){ //TODO show top 5 Pensioner swimmers
-        userinterface.trainerDisciplins();
-        int input = userinterface.returnsUserInputInt();
-
-        switch (input) {
-            case 1: { //butterfly
-
-                break;
-            }
-            case 2: {  //crawl
-
-                break;
-            }
-            case 3: { //back crawl
-
-                break;
-            }
-            case 4: { //breaststroke
-
-                break;
-            }
-            case 5: { //return
-                break;
-            }
-        }
-    }
-
-    public void topSwimmers(){ //TODO show top 5 swimmers overall
-        userinterface.trainerDisciplins();
-        int input = userinterface.returnsUserInputInt();
-
-        switch (input) {
-            case 1: { //butterfly
-
-                break;
-            }
-            case 2: {  //crawl
-
-                break;
-            }
-            case 3: { //back crawl
-
-                break;
-            }
-            case 4: { //breaststroke
-
-                break;
-            }
-            case 5: { //return
-                break;
-            }
-        }
-    }
-
 
     public void setChairmanController(ChairmanController chairmanController) {
         this.chairmanController=chairmanController;

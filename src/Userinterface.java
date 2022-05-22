@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Userinterface {
 
     String BACKGROUND = "\u001b[48;5;195m";
-    String BLUE_DARK= "\u001b[38;5;19m";
-    String BOLD="\u001b[1m";
+    String BLUE_DARK = "\u001b[38;5;19m";
+    String BOLD = "\u001b[1m";
 
     Scanner scanner = new Scanner(System.in);
 
@@ -24,6 +24,7 @@ public class Userinterface {
         String userInput = scanner.nextLine().toLowerCase();
         return userInput;
     }
+
     public double returnsUserInputDouble() {
         while (!scanner.hasNextDouble()) {
             System.out.print("Error, enter number: ");
@@ -49,7 +50,7 @@ public class Userinterface {
         System.out.println("""
                                 
                 You are logged in as Trainer
-         
+                         
                 1) View swimmers
                 2) View top 5
                 3) Add/change time to competitive swimmer
@@ -80,7 +81,7 @@ public class Userinterface {
 
     public void trainerDisciplins() {
         System.out.println("""
-                
+                                
                 1) Butterfly
                 2) Crawl
                 3) Back crawl
@@ -174,7 +175,7 @@ public class Userinterface {
         System.out.println("Payment status");
     }
 
-    public void listOfAllMembers(){
+    public void listOfAllMembers() {
         System.out.println("List of all members");
     }
 
@@ -202,13 +203,14 @@ public class Userinterface {
                 memberStatus = "Exerciser";
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
-                    activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: "+ members.get(i).getMemberId());
+                    activity + ", " + memberStatus + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: " + members.get(i).getMemberId());
         }
     }
 
-    public void listOfCompetitiveMembers(){
+    public void listOfCompetitiveMembers() {
         System.out.println("List of competitive members");
     }
+
     public void viewListOfCompetitiveMembers(ArrayList<CompetitiveMember> members) {
 
         String gender;
@@ -226,14 +228,14 @@ public class Userinterface {
             else
                 activity = "Passive";
 
-            if (members.get(i).getSwimmingDisciplin()!=null)
-               swimmingDisciplines = ", Discipline: " + members.get(i).getSwimmingDisciplin();
+            if (members.get(i).getSwimmingDisciplin() != null)
+                swimmingDisciplines = ", Discipline: " + members.get(i).getSwimmingDisciplin();
             else
-                swimmingDisciplines ="";
+                swimmingDisciplines = "";
 
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
-                    activity + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: "+ members.get(i).getMemberId()
+                    activity + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: " + members.get(i).getMemberId()
                     + swimmingDisciplines);
         }
     }
@@ -302,19 +304,19 @@ public class Userinterface {
     public void printCompetitiveMemberNamesAndID(ArrayList<CompetitiveMember> members) {
         String discipline;
         for (int i = 0; i < members.size(); i++) {
-            if(members.get(i).getSwimmingDisciplin()!=null){
-                discipline=", Disccipline:" + members.get(i).getSwimmingDisciplin();
-            }
-            else
-                discipline="";
+            if (members.get(i).getSwimmingDisciplin() != null) {
+                discipline = ", Disccipline:" + members.get(i).getSwimmingDisciplin();
+            } else
+                discipline = "";
             System.out.println(members.get(i).getName() + ", ID: " + members.get(i).getMemberId() + discipline);
         }
     }
-    public void printMemberId(){
+
+    public void printMemberId() {
         System.out.println("this is your member ID");
     }
 
-    public void askMemberIDorName(){
+    public void askMemberIDorName() {
         System.out.print("\nType name or member ID: ");
     }
 
@@ -334,5 +336,15 @@ public class Userinterface {
     public void printGroupTitle(String ageGroup) {
         System.out.println(ageGroup + " competitors:");
 
+    }
+
+    public void displayTop5(ArrayList<CompetitiveMember> disciplines, ArrayList<CompetitiveMember> competitiveMembers) {
+        for (int i = 0; i < disciplines.size(); i++) {
+            for (int j = 0; j < competitiveMembers.size(); j++) { //TODO: loop til 5
+                if (disciplines.get(i) == competitiveMembers.get(j))
+                    System.out.println(disciplines.get(i).getName() + ",ID: " + disciplines.get(i).getMemberId() + ", Time: " + disciplines.get(i).getTime());
+            }
+
+        }
     }
 }
