@@ -20,17 +20,22 @@ u;12-12-2020;y;true;true;true;21;CRAWL;14.2
 basse;11-11-2019;her;true;true;true;24;CRAWL;7.7
 fnuller;11-11-2018;nuller;true;true;true;25;CRAWL;6.7
 test;17-05-2005;test;false;true;true;26;CRAWL;27.4
-Peter;12-06-2015;vejrløse;false;true;true;26;null;0.0
-Svend;31-08-2016;stenløse;false;true;true;27;null;0.0
-Elaine;13-12-2012;holte;true;true;true;28;null;0.0
-Mathias;12-12-2020;Holte;false;true;true;29;null;0.0
-svetlana;16-04-2014;Søborg;true;true;true;30;null;0.0
-Allan;14-04-2011;Høje Gladsaxe;false;true;true;31;null;0.0
-Malene;14-02-2016;Glostrup;true;true;true;32;null;0.0
-BootyMcButtFace;02-07-2017;Bootyville;true;true;true;33;null;0.0
-Søren;24-07-2019;Køge;false;true;true;34;null;0.0
-Stine;17-03-2015;Viborg;true;true;true;35;null;0.0
-Louise;24-03-2016;Herfølge;true;true;true;36;null;0.0
-Julie;23-04-2020;Gadstrup;true;true;true;37;null;0.0
-Julia;01-01-2021;Hillerød;true;true;true;38;null;0.0
-Juliette;27-05-2012;Kokkedal;true;true;true;39;null;0.0
+Peter;12-06-2015;vejrløse;false;true;true;40;BACKCRAWL;0.0
+Svend;31-08-2016;stenløse;false;true;true;27;BACKCRAWL;0.0
+Elaine;13-12-2012;holte;true;true;true;28;BACKCRAWL;0.0
+Mathias;12-12-2020;Holte;false;true;true;29;BACKCRAWL;0.0
+svetlana;16-04-2014;Søborg;true;true;true;30;BACKCRAWL;0.0
+Allan;14-04-2011;Høje Gladsaxe;false;true;true;31;BACKCRAWL;0.0
+Malene;14-02-2016;Glostrup;true;true;true;32;BUTTERFLY;0.0
+BootyMcButtFace;02-07-2017;Bootyville;true;true;true;33;BUTTERFLY;0.0
+Søren;24-07-2019;Køge;false;true;true;34;BUTTERFLY;0.0
+Stine;17-03-2015;Viborg;true;true;true;35;BUTTERFLY;0.0
+Louise;24-03-2016;Herfølge;true;true;true;36;BUTTERFLY;0.0
+Julie;23-04-2020;Gadstrup;true;true;true;37;BUTTERFLY;0.0
+Julia;01-01-2021;Hillerød;true;true;true;38;BUTTERFLY;0.0
+Juliette;27-05-2012;Kokkedal;true;true;true;39;BREASTSTROKE;0.0
+Sam;12-05-2012;Allerød;true;true;true;39;BREASTSTROKE;0.0
+Kristine;03-07-2012;Egedal;true;true;true;39;BREASTSTROKE;0.0
+Kristian;19-05-2012;Helsingør;false;true;true;39;BREASTSTROKE;0.0
+Amalie;19-04-2012;Roskilde;true;true;true;39;BREASTSTROKE;0.0
+Juliette;27-05-2012;Næstved;true;true;true;39;BREASTSTROKE;0.0
