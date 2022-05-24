@@ -1,6 +1,3 @@
-import java.util.Collections;
-import java.util.Comparator;
-
 public class CompetitiveMember extends Member implements Comparable<CompetitiveMember>
 {
     private double time;
@@ -46,10 +43,10 @@ public class CompetitiveMember extends Member implements Comparable<CompetitiveM
                 return 1;
             else if (timeInt < timeIntOther)
                 return -1;
-        //return (int) (time - o.time);
-    }
 
+    }
         return 0;
-    }}
+    }
+}
 
 
