@@ -375,11 +375,12 @@ public class ChairmanController {
                                 swimmingDiscipline = SwimmingDisciplines.BREASTSTROKE;
                                 break;
                         }
-                        competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
 
-                       // double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
-                       // System.out.println(time);
-                       // competitiveMember.setTime(time);
+                       competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
+                        lineScanner.useLocale(Locale.ENGLISH); //dette
+                       double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
+                       //System.out.println(time);
+                       competitiveMember.setTime(time);
 
                     }
 

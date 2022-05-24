@@ -236,7 +236,7 @@ public class Userinterface {
 
             System.out.println(members.get(i).getName() + ", " + members.get(i).getAge() + ", " +
                     activity + ", " + gender + ", " + members.get(i).getAddress() + ", memberID: " + members.get(i).getMemberId()
-                    + swimmingDisciplines);
+                    + swimmingDisciplines + ", time: " + members.get(i).getTime());
         }
     }
 

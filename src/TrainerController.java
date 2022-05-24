@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TrainerController
 {
@@ -238,7 +239,10 @@ public class TrainerController
                 printMembers(allCompetetiveSwimmers);
 
             case 2: {
+                Collections.sort(juniorCompetitors);
                 printMembers(juniorCompetitors);
+
+
                 break;
             }
             case 3: {

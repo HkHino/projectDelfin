@@ -4,7 +4,7 @@ Michealdi;03-06-1997;Hårlev;false;false;false;3
 Basma;03-12-2007;Nørrebro;true;false;false;4
 Fluttendut;11-01-1000;Mars;true;true;true;5;null;0.0
 Hino;14-04-1500;Jupiter;false;false;false;6
-Busbus;30-05-2010;Månen;true;true;true;7;CRAWL;4.6
+Busbus;30-05-2010;Månen;true;true;true;7;CRAWL;7.5
 Mathias;16-07-1999;Nordhavn;false;false;true;8;null;0.0
 Mikkel;13-10-2015;Vesterbro;false;true;false;9
 Jessica;08-08-1980;Hvidovre;true;false;false;10
@@ -15,3 +15,7 @@ Kanelsnegl;30-02-1975;Sydhavn;false;false;true;14;null;0.0
 Dumbo;31-03-2006;Søborg;true;true;false;15
 Svampebob;12-07-2017;Gladsaxe;false;false;false;16
 l;23-04-1992;a;true;true;true;18;BUTTERFLY;0.0
+j;12-12-2020;a;true;true;true;20;null;23.4
+u;12-12-2020;y;true;true;true;21;null;14.2
+basse;11-11-2019;her;true;true;true;24;null;7.2
+fnuller;11-11-2018;nuller;true;true;true;25;null;6.7
