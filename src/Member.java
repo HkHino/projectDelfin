@@ -32,26 +32,9 @@ public class Member {
             age = currentYear - year - 1;
     }
 
-    //constructor
-   /* public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer)
-    {
-        this.name = name;
-
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.genderIsFemale = genderIsFemale;
-        this.isActive = isActive;
-        this.isCompetitiveSwimmer = isCompetitiveSwimmer;
-
-        calculateAge();
-    }
-
-    */
-
     public Member(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, int numberGen)
     {
         this.name = name;
-
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.genderIsFemale = genderIsFemale;
@@ -70,6 +53,7 @@ public class Member {
     public String getName(){
         return name;
     }
+
     public String getAddress(){
         return address;
     }
@@ -93,6 +77,7 @@ public class Member {
     public String getDateOfBirth() {
         return dateOfBirth;
     }
+
     public void setMembershipPrice(double membershipPrice) {
         this.membershipPrice = membershipPrice;
     }
@@ -109,10 +94,6 @@ public class Member {
         isCompetitiveSwimmer = competitiveSwimmer;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setAddress(String address) {
         this.address = address;
     }
@@ -124,10 +105,12 @@ public class Member {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
     public void setHasPaid(boolean hasPaid)
     {
         this.hasPaid = hasPaid;
     }
+
     public boolean isHasPaid()
     {
         return hasPaid;
@@ -138,8 +121,4 @@ public class Member {
         return memberId;
     }
 
-    public void setMemberId(int memberId)
-    {
-        this.memberId = memberId;
-    }
 }

@@ -4,11 +4,11 @@ import java.util.Collections;
 public class TrainerController
 {
 
-    private Userinterface userinterface;
+    private UserInterface userinterface;
     private ChairmanController chairmanController;
     private CompetitiveMember competitiveMember;
 
-    private ArrayList<CompetitiveMember> allCompetetiveSwimmers; //liste af members af typen CompetitiveMember (klassen)
+    private ArrayList<CompetitiveMember> allCompetitiveSwimmers; //liste af members af typen CompetitiveMember (klassen)
 
     //Arraylister modtaget fra chairmanController
     private ArrayList<Member> juniorSwimmers;
@@ -20,14 +20,14 @@ public class TrainerController
     private ArrayList<CompetitiveMember> pensionerCompetitors = new ArrayList<>();
     private ArrayList<CompetitiveMember> butterfly = new ArrayList<>();
     private ArrayList<CompetitiveMember> crawl = new ArrayList<>();
-    private ArrayList<CompetitiveMember> backcrawl = new ArrayList<>();
+    private ArrayList<CompetitiveMember> backCrawl = new ArrayList<>();
     private ArrayList<CompetitiveMember> breaststroke = new ArrayList<>();
 
     private ArrayList<CompetitiveMember> top5Crawl= new ArrayList<>();
     //private ArrayList<Double>
 
 
-    public TrainerController(Userinterface userinterface, CompetitiveMember competitiveMember)
+    public TrainerController(UserInterface userinterface, CompetitiveMember competitiveMember)
     {
         this.userinterface = userinterface;
         this.competitiveMember = competitiveMember;
@@ -35,7 +35,7 @@ public class TrainerController
     }
     public void trainerMenu(){
         divideCompetitorsByAge();
-        addMemberToDisciplinFromFile();
+        addMemberToDisciplineFromFile();
 
         boolean loop = true;
         while (loop){
@@ -71,21 +71,21 @@ public class TrainerController
     }
 
     public void addOrChangeCompetitorDiscipline(){
-        userinterface.askWhichAgeGroup();
+        userinterface.whichAgeGroup();
         int input = userinterface.returnsUserInputInt();
 
         switch (input){
             case 1:
                 userinterface.printGroupTitle("Junior");
-                findCompetitorsAndAddToDisciplines(juniorCompetitors);
+                findCompetitorsAndAddToDiscipline(juniorCompetitors);
                 break;
             case 2:
                 userinterface.printGroupTitle("Senior");
-                findCompetitorsAndAddToDisciplines(seniorCompetitors);
+                findCompetitorsAndAddToDiscipline(seniorCompetitors);
                 break;
             case 3:
                 userinterface.printGroupTitle("Pensioner");
-                findCompetitorsAndAddToDisciplines(pensionerCompetitors);
+                findCompetitorsAndAddToDiscipline(pensionerCompetitors);
                 break;
             case 4:
                 break;
@@ -95,7 +95,7 @@ public class TrainerController
     }
 
     public void addOrChangeCompetitorTime(){
-        userinterface.askWhichAgeGroup();
+        userinterface.whichAgeGroup();
         int input = userinterface.returnsUserInputInt();
 
         switch (input){
@@ -119,41 +119,44 @@ public class TrainerController
     }
 
     public void divideCompetitorsByAge(){
-        allCompetetiveSwimmers = chairmanController.getCompetitiveSwimmers();
+        allCompetitiveSwimmers = chairmanController.getCompetitiveSwimmers();
         juniorSwimmers = chairmanController.getJuniors();
         seniorSwimmers =  chairmanController.getSeniors();
         pensionerSwimmers = chairmanController.getPensioner();
 
         //Kategoriserer medlemmer ved alder
+
         //JUNIOR
-        for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
+        for (int i = 0; i < allCompetitiveSwimmers.size(); i++) {
             for (int j = 0; j < juniorSwimmers.size(); j++) {
-                if(allCompetetiveSwimmers.get(i)== juniorSwimmers.get(j))
-                    juniorCompetitors.add(allCompetetiveSwimmers.get(i));
+                if(allCompetitiveSwimmers.get(i)== juniorSwimmers.get(j))
+                    juniorCompetitors.add(allCompetitiveSwimmers.get(i));
             }
         }
+
         //SENIOR
-        for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
+        for (int i = 0; i < allCompetitiveSwimmers.size(); i++) {
             for (int j = 0; j < seniorSwimmers.size(); j++) {
-                if(allCompetetiveSwimmers.get(i)== seniorSwimmers.get(j))
-                    seniorCompetitors.add(allCompetetiveSwimmers.get(i));
+                if(allCompetitiveSwimmers.get(i)== seniorSwimmers.get(j))
+                    seniorCompetitors.add(allCompetitiveSwimmers.get(i));
             }
         }
+
         //PENSIONER
-        for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
+        for (int i = 0; i < allCompetitiveSwimmers.size(); i++) {
             for (int j = 0; j < pensionerSwimmers.size(); j++) {
-                if(allCompetetiveSwimmers.get(i)== pensionerSwimmers.get(j))
-                    pensionerCompetitors.add(allCompetetiveSwimmers.get(i));
+                if(allCompetitiveSwimmers.get(i)== pensionerSwimmers.get(j))
+                    pensionerCompetitors.add(allCompetitiveSwimmers.get(i));
             }
         }
     }
 
-    public void findCompetitorsAndAddToDisciplines(ArrayList<CompetitiveMember> members){
+    public void findCompetitorsAndAddToDiscipline(ArrayList<CompetitiveMember> members){
         userinterface.printCompetitiveMemberNamesAndID(members);
 
         boolean loop = true;
         while(loop) {
-            userinterface.askMemberIDorName();
+            userinterface.memberIDorName();
             String nameOrID = userinterface.returnsUserInputString();
 
             boolean found = false;
@@ -162,20 +165,20 @@ public class TrainerController
                 int memberId = (Integer.parseInt(nameOrID));
                 for (int i = 0; i < members.size(); i++) {
                     if (memberId == members.get(i).getMemberId()) {
-                        addMemberToDisciplin(members.get(i)); //metoden der tilføjer til disciplin
+                        addMemberToDiscipline(members.get(i)); //metoden der tilføjer til disciplin
+                        members.get(i).setTime(0);
                         found = true;
                         loop = false;
-
                     }
                 }
             } catch (Exception e) {
                 for (int i = 0; i < members.size(); i++) {
                     if (nameOrID.equals(members.get(i).getName().toLowerCase())) {
-                        addMemberToDisciplin(members.get(i));
+                        addMemberToDiscipline(members.get(i));
+                        members.get(i).setTime(0);
                         found = true;
                         loop = false;
                     }
-
                 }
             }
             if (!found) {
@@ -184,24 +187,23 @@ public class TrainerController
         }
     }
 
-    public void addMemberToDisciplinFromFile(){
-        for (int i = 0; i < allCompetetiveSwimmers.size(); i++) {
-            if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.CRAWL)
-                crawl.add(allCompetetiveSwimmers.get(i));
-            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BUTTERFLY)
-                butterfly.add(allCompetetiveSwimmers.get(i));
-            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BACKCRAWL)
-                backcrawl.add(allCompetetiveSwimmers.get(i));
-            else if(allCompetetiveSwimmers.get(i).getSwimmingDisciplin()==SwimmingDisciplines.BREASTSTROKE)
-                breaststroke.add(allCompetetiveSwimmers.get(i));
+    public void addMemberToDisciplineFromFile(){
+        for (int i = 0; i < allCompetitiveSwimmers.size(); i++) {
+            if(allCompetitiveSwimmers.get(i).getSwimmingDiscipline()==SwimmingDisciplines.CRAWL)
+                crawl.add(allCompetitiveSwimmers.get(i));
+            else if(allCompetitiveSwimmers.get(i).getSwimmingDiscipline()==SwimmingDisciplines.BUTTERFLY)
+                butterfly.add(allCompetitiveSwimmers.get(i));
+            else if(allCompetitiveSwimmers.get(i).getSwimmingDiscipline()==SwimmingDisciplines.BACKCRAWL)
+                backCrawl.add(allCompetitiveSwimmers.get(i));
+            else if(allCompetitiveSwimmers.get(i).getSwimmingDiscipline()==SwimmingDisciplines.BREASTSTROKE)
+                breaststroke.add(allCompetitiveSwimmers.get(i));
         }
 
     }
 
 
-
-    public void addMemberToDisciplin(CompetitiveMember member){
-        userinterface.trainerDisciplins();
+    public void addMemberToDiscipline(CompetitiveMember member){
+        userinterface.trainerDisciplines();
         int input = userinterface.returnsUserInputInt();
 
         switch (input){
@@ -215,7 +217,7 @@ public class TrainerController
                 break;
             case 3:
                 member.setSwimmingDisciplin(SwimmingDisciplines.BACKCRAWL);
-                backcrawl.add(member);
+                backCrawl.add(member);
                 break;
             case 4:
                 member.setSwimmingDisciplin(SwimmingDisciplines.BREASTSTROKE);
@@ -235,8 +237,8 @@ public class TrainerController
         switch (input) {
             case 1:
                 userinterface.listOfCompetitiveMembers();
-                Collections.sort(allCompetetiveSwimmers);
-                printMembers(allCompetetiveSwimmers);
+                Collections.sort(allCompetitiveSwimmers);
+                printMembers(allCompetitiveSwimmers);
 
             case 2: {
                 Collections.sort(juniorCompetitors);
@@ -264,7 +266,7 @@ public class TrainerController
 
             boolean loop = true;
             while(loop) {
-                userinterface.askMemberIDorName();
+                userinterface.memberIDorName();
                 String nameOrID = userinterface.returnsUserInputString();
 
                 boolean found = false;
@@ -320,7 +322,7 @@ public class TrainerController
                 break;
             }
             case 4: {
-                topFiveSwimmers(allCompetetiveSwimmers);
+                topFiveSwimmers(allCompetitiveSwimmers);
                 break;
             }
             case 5: {
@@ -330,7 +332,7 @@ public class TrainerController
     }
 
     public void topFiveSwimmers(ArrayList<CompetitiveMember> competitiveMembers) {
-        userinterface.trainerDisciplins();
+        userinterface.trainerDisciplines();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
@@ -345,8 +347,8 @@ public class TrainerController
             }
                 break;
             case 3: { //back crawl
-                Collections.sort(backcrawl);
-                userinterface.displayTop5(backcrawl,competitiveMembers);
+                Collections.sort(backCrawl);
+                userinterface.displayTop5(backCrawl,competitiveMembers);
                 break;
             }
             case 4: { //breaststroke

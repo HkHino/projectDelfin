@@ -10,18 +10,18 @@ public class Cashier {
 
     private int pensionerAge = 60;
     private double pensionerDiscount = 0.75;
-    private double pricePensionist = 1600 * pensionerDiscount;
+    private double pricePensioner = 1600 * pensionerDiscount;
     private int pricePassiveMember = 500;
 
     private ChairmanController chairmanController;
-    private Userinterface userinterface;
+    private UserInterface userinterface;
 
     public void setChairmanController(ChairmanController chairmanController) {
         this.chairmanController = chairmanController;
     }
 
 
-    public Cashier(Userinterface userinterface) {
+    public Cashier(UserInterface userinterface) {
         this.userinterface = userinterface;
     }
 
@@ -36,7 +36,7 @@ public class Cashier {
                     userinterface.printTotalIncome(totalExpectedIncome());
                     break;
                 case 2:
-                    System.out.println("expenses option coming soon to a program near you!");
+                    userinterface.expenses();
                     //todo feature coming soon to a program near you
                     break;
                 case 3:
@@ -71,13 +71,13 @@ public class Cashier {
 
         for (int i = 0; i < chairmanController.getPensioner().size(); i++) {
             if (chairmanController.getPensioner().get(i).isActive() == true)
-                chairmanController.getPensioner().get(i).setMembershipPrice(pricePensionist);
+                chairmanController.getPensioner().get(i).setMembershipPrice(pricePensioner);
         }
     }
 
     public void paymentList() {
         memberPayment();
-        paymentchecker();
+        paymentChecker();
         String paymentstatus;
 
         userinterface.paymentStatus();
@@ -93,38 +93,19 @@ public class Cashier {
     }
 
     public double totalExpectedIncome() {
-        double totalIcome = 0;
+        double totalIncome = 0;
         
         memberPayment();
         double memberPrice;
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {
             memberPrice = chairmanController.getAllMembers().get(i).getMembershipPrice();
-            totalIcome = totalIcome + memberPrice;
+            totalIncome = totalIncome + memberPrice;
         }
-        return totalIcome;
+        return totalIncome;
 
     }
 
-    /*
-    public void totalExpectedIncome() {
-        int amountOfMembersJunior = chairmanController.getJuniors().size();
-        int amountOfMembersSenior = chairmanController.getSeniors().size();
-        int amountOfMembersPassive = chairmanController.getPassiveMembers().size();
-        int amountOfMembersPensionists = chairmanController.getPensioner().size();
-
-        int incomePassiveMembers = amountOfMembersPassive * pricePassiveMember;
-        int incomeMembersJunior = amountOfMembersJunior * priceJunior;
-        int incomeMembersSenior = amountOfMembersSenior * priceSenior;
-        double incomeMembersPensionists = amountOfMembersPensionists * pricePensionist;
-
-        double totalIncome = incomeMembersSenior + incomeMembersJunior + incomePassiveMembers + incomeMembersPensionists;
-        userinterface.totalIncome();
-        System.out.println(totalIncome + "kr");
-    }
-
-     */
-
-    public void paymentchecker() {
+    public void paymentChecker() {
         Random rand = new Random();
 
         for (int i = 0; i < chairmanController.getAllMembers().size(); i++) {

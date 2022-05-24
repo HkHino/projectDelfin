@@ -1,27 +1,25 @@
 import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.util.ArrayList;
 
 public class Controller
 {
     private ChairmanController chairmanController;
     private TrainerController trainerController;
     private Cashier cashier;
-    private Userinterface userinterface;
-    private Trainer trainer;
+    private UserInterface userinterface;
     private CompetitiveMember competitiveMember;
     private Member member;
 
     public Controller() throws FileNotFoundException
     {
-        userinterface = new Userinterface();
+        userinterface = new UserInterface();
         cashier = new Cashier(userinterface);
         chairmanController = new ChairmanController(userinterface, cashier);
 
         cashier.setChairmanController(chairmanController);
         trainerController = new TrainerController(userinterface, competitiveMember);
         trainerController.setChairmanController(chairmanController);
-        trainer = new Trainer("Bob", 1);
+        chairmanController.setTrainerController(trainerController);
+
 
 
     }
@@ -53,7 +51,7 @@ public class Controller
             }
             else if (input == 4)
             {
-                System.out.println("Thanks for using malaka software inc");
+                userinterface.malakaSoftwareInc();
                 loop = false;
             }
 

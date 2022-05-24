@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -19,13 +17,14 @@ public class ChairmanController {
     private ArrayList<Member> juniors = new ArrayList<>();
     private ArrayList<Member> pensioner = new ArrayList<>();
 
-    private Userinterface userinterface;
+    private UserInterface userinterface;
     private Cashier cashier;
-    private int lastIDnumber;
+    private int lastIDNumber;
     private int memberNumberGen = 0;
+    private TrainerController trainerController;
 
     //constructor
-    public ChairmanController(Userinterface userinterface, Cashier cashier) throws FileNotFoundException {
+    public ChairmanController(UserInterface userinterface, Cashier cashier) throws FileNotFoundException {
         this.userinterface = userinterface;
         this.cashier = cashier;
     }
@@ -63,7 +62,7 @@ public class ChairmanController {
     }
 
     public void adjustMembersMenu() {
-        userinterface.adjustMembersMenu();
+        userinterface.chairmanMembersMenu();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
@@ -75,10 +74,10 @@ public class ChairmanController {
             case 2: {
                 findMemberToAdjust();
                 break;
-
             }
             case 3:
-                //todo top 5
+                trainerController.top5Menu();
+                break;
             case 4:
                 break;
         }
@@ -86,7 +85,7 @@ public class ChairmanController {
     }
 
     public void findMemberToAdjust() {
-        userinterface.askFindMemberToAdjust();
+        userinterface.findMemberToAdjust();
         String input = userinterface.returnsUserInputString();
 
         for (Member member : allMembers) {
@@ -98,7 +97,7 @@ public class ChairmanController {
 
     public void adjustMemberInfo(Member member) {
         userinterface.printMember(member);
-        userinterface.askWhatInfoToAdjust();
+        userinterface.whatInfoToAdjust();
         int input = userinterface.returnsUserInputInt();
 
         switch (input) {
@@ -150,7 +149,7 @@ public class ChairmanController {
 
         //input der er fejlhåndteret har sin egen metode
         String inputDateOfBirth = dateOfBirth();
-        boolean genderIsFemale = genderIsFemale();
+        boolean genderIsFemale = gender();
         boolean isActive = isActive();
         boolean isCompetitiveSwimmer = isCompetitiveSwimmer();
         double time = 0;
@@ -169,7 +168,7 @@ public class ChairmanController {
         return inputDateOfBirth;
     }
 
-    public boolean genderIsFemale() {
+    public boolean gender() {
         boolean askGenderLoop = true;
         while (askGenderLoop) {
             userinterface.askGender();
@@ -190,7 +189,7 @@ public class ChairmanController {
     public boolean isActive() {
         boolean askActivityLoop = true;
         while (askActivityLoop) {
-            userinterface.askMemberactivity();
+            userinterface.askMemberActivity();
             String inputActivity = userinterface.returnsUserInputString().toLowerCase();
 
             switch (inputActivity) {
@@ -225,7 +224,7 @@ public class ChairmanController {
 
 
     public void createNewMember(String name, String dateOfBirth, String address, boolean genderIsFemale, boolean isActive, boolean isCompetitiveSwimmer, double time) throws FileNotFoundException {
-        memberNumberGen = loadLastIDnumber();
+        memberNumberGen = loadLastIdNumber();
         System.out.println(memberNumberGen);
 
         if (isCompetitiveSwimmer)
@@ -240,7 +239,7 @@ public class ChairmanController {
         if (isCompetitiveSwimmer) {
             CompetitiveMember competitiveMember = new CompetitiveMember(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
             memberNumberGen++;
-            saveLastIDnumber(memberNumberGen); //saver til fil
+            saveLastIdNumber(memberNumberGen); //saver til fil
             competitiveMember.setTime(0.0);
             addMemberToMemberList(competitiveMember); //All Members
             addMemberToArraylists(competitiveMember, isActive, isCompetitiveSwimmer); //Andre member arrays
@@ -250,7 +249,7 @@ public class ChairmanController {
 
             Member member = new Member(name, dateOfBirth, address, genderIsFemale, isActive, isCompetitiveSwimmer, memberNumberGen);
             memberNumberGen++;
-            saveLastIDnumber(memberNumberGen); //saver til fil
+            saveLastIdNumber(memberNumberGen); //saver til fil
             addMemberToMemberList(member);
             addMemberToArraylists(member, isActive, isCompetitiveSwimmer);
 
@@ -300,13 +299,13 @@ public class ChairmanController {
         userinterface.printMemberNamesAndID(allMembers);
 
         System.out.println();
-        userinterface.askMemberIDorName();
+        userinterface.memberIDorName();
         String nameOrID = userinterface.returnsUserInputString();
 
-        findMemberIDorName(nameOrID);
+        findMemberIdOrName(nameOrID);
     }
 
-    public void findMemberIDorName(String nameOrID) {
+    public void findMemberIdOrName(String nameOrID) {
         try {
             int memberId = (Integer.parseInt(nameOrID));
             for (int i = 0; i < allMembers.size(); i++) {
@@ -332,7 +331,7 @@ public class ChairmanController {
         for (Member member : allMembers) {
             if (member instanceof CompetitiveMember) {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
-                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDisciplin() + ";" + ((CompetitiveMember) member).getTime());
+                        member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId() + ";" + ((CompetitiveMember) member).getSwimmingDiscipline() + ";" + ((CompetitiveMember) member).getTime());
             } else {
                 out.println(member.getName() + ";" + member.getDateOfBirth() + ";" + member.getAddress() + ";" + member.isGenderIsFemale() + ";" +
                         member.isActive() + ";" + member.isCompetitiveSwimmer() + ";" + member.getMemberId()) ;
@@ -379,7 +378,6 @@ public class ChairmanController {
                        competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
                         lineScanner.useLocale(Locale.ENGLISH); //dette bruges til at læse vores fil, da vi gemmer på engels, men forsøger at læse på dansk. nu tvinger vi den til at læse på englesk, dette løser problemet.
                        double time = lineScanner.nextDouble();
-                       //System.out.println(time);
                        competitiveMember.setTime(time);
 
                     }
@@ -396,17 +394,17 @@ public class ChairmanController {
     }
 
 
-    public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
+    public void saveLastIdNumber(int MemberNumberGen) throws FileNotFoundException {
         PrintStream out = new PrintStream("memberID.txt");
         out.print(MemberNumberGen);
     }
 
-    public int loadLastIDnumber() throws FileNotFoundException {
+    public int loadLastIdNumber() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("memberID.txt"));
         while (sc.hasNextLine()) {
-            lastIDnumber = sc.nextInt();
+            lastIDNumber = sc.nextInt();
         }
-        return lastIDnumber;
+        return lastIDNumber;
     }
 
     public ArrayList<Member> getAllMembers() {
@@ -432,6 +430,10 @@ public class ChairmanController {
 
     public ArrayList<CompetitiveMember> getCompetitiveSwimmers() {
         return competitiveSwimmers;
+    }
+
+    public void setTrainerController(TrainerController trainerController) {
+        this.trainerController = trainerController;
     }
 }
 
