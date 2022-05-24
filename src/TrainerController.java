@@ -166,7 +166,7 @@ public class TrainerController
                 for (int i = 0; i < members.size(); i++) {
                     if (memberId == members.get(i).getMemberId()) {
                         addMemberToDiscipline(members.get(i)); //metoden der tilføjer til disciplin
-                        members.get(i).setTime(0);
+                        //members.get(i).setTime(0);
                         found = true;
                         loop = false;
                     }
@@ -175,7 +175,7 @@ public class TrainerController
                 for (int i = 0; i < members.size(); i++) {
                     if (nameOrID.equals(members.get(i).getName().toLowerCase())) {
                         addMemberToDiscipline(members.get(i));
-                        members.get(i).setTime(0);
+                        //members.get(i).setTime(0);
                         found = true;
                         loop = false;
                     }
