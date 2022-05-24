@@ -377,8 +377,8 @@ public class ChairmanController {
                         }
 
                        competitiveMember.setSwimmingDisciplin(swimmingDiscipline);
-                        lineScanner.useLocale(Locale.ENGLISH); //dette
-                       double time = lineScanner.nextDouble(); //TODO fejl i læsning af double. Den læser punktummer istedet for komma.
+                        lineScanner.useLocale(Locale.ENGLISH); //dette bruges til at læse vores fil, da vi gemmer på engels, men forsøger at læse på dansk. nu tvinger vi den til at læse på englesk, dette løser problemet.
+                       double time = lineScanner.nextDouble();
                        //System.out.println(time);
                        competitiveMember.setTime(time);
 
