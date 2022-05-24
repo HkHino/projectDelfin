@@ -340,9 +340,9 @@ public class Userinterface {
 
     public void displayTop5(ArrayList<CompetitiveMember> disciplines, ArrayList<CompetitiveMember> competitiveMembers) {
         for (int i = 0; i < disciplines.size(); i++) {
-            for (int j = 0; j < competitiveMembers.size(); j++) { //TODO: loop til 5
+            for (int j = 0; j < 5; j++) {
                 if (disciplines.get(i) == competitiveMembers.get(j))
-                    System.out.println(disciplines.get(i).getName() + ",ID: " + disciplines.get(i).getMemberId() + ", Time: " + disciplines.get(i).getTime());
+                    System.out.println((i+1) + "# " + disciplines.get(i).getName() + ", ID: " + disciplines.get(i).getMemberId() + ", Time: " + disciplines.get(i).getTime());
             }
 
         }

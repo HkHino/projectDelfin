@@ -15,10 +15,11 @@ Kanelsnegl;30-02-1975;Sydhavn;false;false;true;14;null;0.0
 Dumbo;31-03-2006;Søborg;true;true;false;15
 Svampebob;12-07-2017;Gladsaxe;false;false;false;16
 l;23-04-1992;a;true;true;true;18;BUTTERFLY;0.0
-j;12-12-2020;a;true;true;true;20;null;23.4
-u;12-12-2020;y;true;true;true;21;null;14.2
-basse;11-11-2019;her;true;true;true;24;null;7.2
-fnuller;11-11-2018;nuller;true;true;true;25;null;6.7
+j;12-12-2020;a;true;true;true;20;CRAWL;23.4
+u;12-12-2020;y;true;true;true;21;CRAWL;14.2
+basse;11-11-2019;her;true;true;true;24;CRAWL;7.7
+fnuller;11-11-2018;nuller;true;true;true;25;CRAWL;6.7
+test;17-05-2005;test;false;true;true;26;CRAWL;27.4
 Peter;12-06-2015;vejrløse;false;true;true;26;null;0.0
 Svend;31-08-2016;stenløse;false;true;true;27;null;0.0
 Elaine;13-12-2012;holte;true;true;true;28;null;0.0

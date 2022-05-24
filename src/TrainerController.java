@@ -10,7 +10,7 @@ public class TrainerController
 
     private ArrayList<CompetitiveMember> allCompetetiveSwimmers; //liste af members af typen CompetitiveMember (klassen)
 
-    //Arraylister mmodtaget fra chairmanController
+    //Arraylister modtaget fra chairmanController
     private ArrayList<Member> juniorSwimmers;
     private ArrayList<Member> seniorSwimmers;
     private ArrayList<Member> pensionerSwimmers;
@@ -212,7 +212,6 @@ public class TrainerController
             case 2:
                 member.setSwimmingDisciplin(SwimmingDisciplines.CRAWL);
                 crawl.add(member);
-                System.out.println(crawl.get(0).getName());
                 break;
             case 3:
                 member.setSwimmingDisciplin(SwimmingDisciplines.BACKCRAWL);
@@ -236,20 +235,21 @@ public class TrainerController
         switch (input) {
             case 1:
                 userinterface.listOfCompetitiveMembers();
+                Collections.sort(allCompetetiveSwimmers);
                 printMembers(allCompetetiveSwimmers);
 
             case 2: {
                 Collections.sort(juniorCompetitors);
                 printMembers(juniorCompetitors);
-
-
                 break;
             }
             case 3: {
+                Collections.sort(seniorCompetitors);
                 printMembers(seniorCompetitors);
                 break;
             }
             case 4: {
+                Collections.sort(pensionerCompetitors);
                 printMembers(pensionerCompetitors);
                 break;
             }
@@ -335,20 +335,23 @@ public class TrainerController
 
         switch (input) {
             case 1: { //butterfly
-
+                Collections.sort(butterfly);
                 userinterface.displayTop5(butterfly,competitiveMembers);
                 break;
             }
             case 2: {  //crawl
+                Collections.sort(crawl);
                 userinterface.displayTop5(crawl, competitiveMembers);
             }
                 break;
             case 3: { //back crawl
-            userinterface.displayTop5(backcrawl,competitiveMembers);
+                Collections.sort(backcrawl);
+                userinterface.displayTop5(backcrawl,competitiveMembers);
                 break;
             }
             case 4: { //breaststroke
-            userinterface.displayTop5(breaststroke,competitiveMembers);
+                Collections.sort(breaststroke);
+                userinterface.displayTop5(breaststroke,competitiveMembers);
                 break;
             }
             case 5: { //return

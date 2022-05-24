@@ -34,7 +34,22 @@ public class CompetitiveMember extends Member implements Comparable<CompetitiveM
     @Override
     public int compareTo(CompetitiveMember o)
     {
-        return (int) (time - o.time);
+        int timeInt = (int) time;
+        int timeIntOther = (int) o.time;
+
+        if (timeInt > timeIntOther)
+            return 1;
+        else if (timeInt < timeIntOther)
+            return -1;
+        else if (timeInt == timeIntOther) {
+            if (timeInt > timeIntOther)
+                return 1;
+            else if (timeInt < timeIntOther)
+                return -1;
+        //return (int) (time - o.time);
     }
-}
+
+        return 0;
+    }}
+
 
