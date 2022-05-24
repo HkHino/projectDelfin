@@ -395,6 +395,7 @@ public class ChairmanController {
         }
     }
 
+
     public void saveLastIDnumber(int MemberNumberGen) throws FileNotFoundException {
         PrintStream out = new PrintStream("memberID.txt");
         out.print(MemberNumberGen);
